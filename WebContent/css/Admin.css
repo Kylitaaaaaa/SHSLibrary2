@@ -1,0 +1,21 @@
+.libManPending{
+    display: none;
+}
+
+#libManagerPendingTable{
+    display: none;
+}
+
+#libStaffDiv{
+    display: none;
+}
+
+#libStaffPendingTable{
+    display: none;
+}
+
+.withPaddingTop{
+    padding-top: 20px;
+}
+
+
