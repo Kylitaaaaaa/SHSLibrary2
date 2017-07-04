@@ -6,7 +6,7 @@ import java.sql.Date;
  */
 public class Admin {
 	public static String TABLE_NAME = "admin";
-	public static String COLUMN_ADMIN_ID="adminID";
+	public static String COLUMN_ADMIN_ID="adminId";
 	public static String COLUMN_ADMIN_FIRST_NAME="firstName";
 	public static String COLUMN_ADMIN_LAST_NAME="lastName";
 	public static String COLUMN_ADMIN_MIDDLE_INITIAL="middleInitial";

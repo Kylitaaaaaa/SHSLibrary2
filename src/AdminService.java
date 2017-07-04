@@ -8,11 +8,43 @@ import java.util.ArrayList;
 public class AdminService {
 	
 	public AdminService(){}
-	
+
+	public static void addAdministrator(String adminId,String firstName, String mi, String lastName, String secretQ, String secretA, String birthday){
+		
+		String sql = String.format("INSERT INTO %s (`%s`,`%s`,`%s`,`%s`,`%s`,`%s`,`%s`,`%s`) VALUES (?,?, ?, ?, ?, ?, ?, ?)",
+				Admin.TABLE_NAME, Admin.COLUMN_ADMIN_ID, Admin.COLUMN_ADMIN_FIRST_NAME, Admin.COLUMN_ADMIN_LAST_NAME, Admin.COLUMN_ADMIN_MIDDLE_INITIAL, Admin.COLUMN_ADMIN_BIRTHDAY, Admin.COLUMN_ADMIN_SECRET_QUESTION, Admin.COLUMN_ADMIN_SECRET_ANSWER, Admin.COLUMN_ADMIN_ADMIN_TYPE);
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = DBPool.getInstance().getConnection();
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, adminId);
+			pstmt.setString(2, firstName);
+			pstmt.setString(3, lastName);
+			pstmt.setString(4, mi);
+			pstmt.setString(5, birthday);
+			pstmt.setString(6, secretQ);
+			pstmt.setString(7, secretA);
+			pstmt.setString(8, "0");
+			
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}		
 	public static void addLibraryManager(String adminId,String firstName, String mi, String lastName, String secretQ, String secretA, String birthday){
 		
 		String sql = String.format("INSERT INTO %s (`%s`,`%s`,`%s`,`%s`,`%s`,`%s`,`%s`,`%s`) VALUES (?,?, ?, ?, ?, ?, ?, ?)",
-				Admin.COLUMN_ADMIN_ID,Admin.TABLE_NAME, Admin.COLUMN_ADMIN_FIRST_NAME, Admin.COLUMN_ADMIN_LAST_NAME, Admin.COLUMN_ADMIN_MIDDLE_INITIAL, Admin.COLUMN_ADMIN_BIRTHDAY, Admin.COLUMN_ADMIN_SECRET_QUESTION, Admin.COLUMN_ADMIN_SECRET_ANSWER, Admin.COLUMN_ADMIN_ADMIN_TYPE);
+				Admin.TABLE_NAME, Admin.COLUMN_ADMIN_ID,Admin.COLUMN_ADMIN_FIRST_NAME, Admin.COLUMN_ADMIN_LAST_NAME, Admin.COLUMN_ADMIN_MIDDLE_INITIAL, Admin.COLUMN_ADMIN_BIRTHDAY, Admin.COLUMN_ADMIN_SECRET_QUESTION, Admin.COLUMN_ADMIN_SECRET_ANSWER, Admin.COLUMN_ADMIN_ADMIN_TYPE);
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -42,6 +74,38 @@ public class AdminService {
 		}
 	}
 	
+	public static void addLibraryStaff(String adminId,String firstName, String mi, String lastName, String secretQ, String secretA, String birthday){
+		
+		String sql = String.format("INSERT INTO %s (`%s`,`%s`,`%s`,`%s`,`%s`,`%s`,`%s`,`%s`) VALUES (?,?, ?, ?, ?, ?, ?, ?)",
+				Admin.TABLE_NAME, Admin.COLUMN_ADMIN_ID, Admin.COLUMN_ADMIN_FIRST_NAME, Admin.COLUMN_ADMIN_LAST_NAME, Admin.COLUMN_ADMIN_MIDDLE_INITIAL, Admin.COLUMN_ADMIN_BIRTHDAY, Admin.COLUMN_ADMIN_SECRET_QUESTION, Admin.COLUMN_ADMIN_SECRET_ANSWER, Admin.COLUMN_ADMIN_ADMIN_TYPE);
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = DBPool.getInstance().getConnection();
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, adminId);
+			pstmt.setString(2, firstName);
+			pstmt.setString(3, lastName);
+			pstmt.setString(4, mi);
+			pstmt.setString(5, birthday);
+			pstmt.setString(6, secretQ);
+			pstmt.setString(7, secretA);
+			pstmt.setString(8, "2");
+			
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}	
 	public static ArrayList<Admin> getAllUserLibraryManager(){
 		ArrayList<Admin> adminList = new ArrayList<Admin>();
 		String sql="SELECT * FROM " + Admin.TABLE_NAME + ";";
