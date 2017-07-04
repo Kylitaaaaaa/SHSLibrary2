@@ -80,14 +80,14 @@ public class Controller extends HttpServlet {
 		
 		
 		if(idNum != null & fName != null & lName != null & mi != null & mNum  != null & email != null & sQuestion != null & sAnswer != null & birthday != "" & password != null){
-			adminService.addLibraryManager(fName, lName, mi, sQuestion, sAnswer, birthday);
 			UserService.addLibraryManagerUser(idNum, password, email, mNum);
+			String adminId= ""/*Get UserID where COLUMN_ID_NUMBER = idNum */;
+			adminService.addLibraryManager(adminId,fName, lName, mi, sQuestion, sAnswer, birthday);
+
 		}
 			
 		else 
-			System.out.println("Aww");
-		
-				
+			System.out.println("Aww");		
 		
 	}
 	

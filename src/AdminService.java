@@ -9,10 +9,10 @@ public class AdminService {
 	
 	public AdminService(){}
 	
-	public static void addLibraryManager(String firstName, String mi, String lastName, String secretQ, String secretA, String birthday){
+	public static void addLibraryManager(String adminId,String firstName, String mi, String lastName, String secretQ, String secretA, String birthday){
 		
-		String sql = String.format("INSERT INTO %s (`%s`,`%s`,`%s`,`%s`,`%s`,`%s`,`%s`) VALUES (?, ?, ?, ?, ?, ?, ?)",
-			 	Admin.TABLE_NAME, Admin.COLUMN_ADMIN_FIRST_NAME, Admin.COLUMN_ADMIN_LAST_NAME, Admin.COLUMN_ADMIN_MIDDLE_INITIAL, Admin.COLUMN_ADMIN_BIRTHDAY, Admin.COLUMN_ADMIN_SECRET_QUESTION, Admin.COLUMN_ADMIN_SECRET_ANSWER, Admin.COLUMN_ADMIN_ADMIN_TYPE);
+		String sql = String.format("INSERT INTO %s (`%s`,`%s`,`%s`,`%s`,`%s`,`%s`,`%s`,`%s`) VALUES (?,?, ?, ?, ?, ?, ?, ?)",
+				Admin.COLUMN_ADMIN_ID,Admin.TABLE_NAME, Admin.COLUMN_ADMIN_FIRST_NAME, Admin.COLUMN_ADMIN_LAST_NAME, Admin.COLUMN_ADMIN_MIDDLE_INITIAL, Admin.COLUMN_ADMIN_BIRTHDAY, Admin.COLUMN_ADMIN_SECRET_QUESTION, Admin.COLUMN_ADMIN_SECRET_ANSWER, Admin.COLUMN_ADMIN_ADMIN_TYPE);
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -20,13 +20,14 @@ public class AdminService {
 		try {
 			conn = DBPool.getInstance().getConnection();
 			pstmt=conn.prepareStatement(sql);
-			pstmt.setString(1, firstName);
-			pstmt.setString(2, lastName);
-			pstmt.setString(3, mi);
-			pstmt.setString(4, birthday);
-			pstmt.setString(5, secretQ);
-			pstmt.setString(6, secretA);
-			pstmt.setString(7, "1");
+			pstmt.setString(1, adminId);
+			pstmt.setString(2, firstName);
+			pstmt.setString(3, lastName);
+			pstmt.setString(4, mi);
+			pstmt.setString(5, birthday);
+			pstmt.setString(6, secretQ);
+			pstmt.setString(7, secretA);
+			pstmt.setString(8, "1");
 			
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
