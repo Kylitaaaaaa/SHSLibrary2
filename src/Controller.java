@@ -1,6 +1,8 @@
 
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,7 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class TrialServlet
  */
-@WebServlet("/Controller")
+@WebServlet(urlPatterns={"/Controller", "/addManager"})
+
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public AdminService adminService = new AdminService();
@@ -30,6 +33,7 @@ public class Controller extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		request.setAttribute("message", "hello");
 		
 		System.out.println("controller get called" + request.getParameter("process"));
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
@@ -59,7 +63,10 @@ public class Controller extends HttpServlet {
 			break;
 			
 		default:
-			
+			System.out.println("me here ");
+			ArrayList<Admin> admins = AdminService.getAllUserLibraryManager();
+			request.setAttribute("admin", admins);
+			request.getRequestDispatcher("Admin.jsp").forward(request, response);
 			break;
 		}
 	}
@@ -77,11 +84,22 @@ public class Controller extends HttpServlet {
 		String birthday = request.getParameter("birthday");
 		String password = request.getParameter("password");
 		
+		System.out.println("idNum " + idNum);
+		System.out.println("fName " + fName);
+		System.out.println("lName " + lName);
+		System.out.println("mi " + mi);
+		System.out.println("mNum " + mNum);
+		System.out.println("email " + email);
+		System.out.println("sQuestion " + sQuestion);
+		System.out.println("sAnswer " + sAnswer);
+		System.out.println("birthday " + birthday);
+		System.out.println("password " + password);
 		
 		if(idNum != null & fName != null & lName != null & mi != null & mNum  != null & email != null & sQuestion != null & sAnswer != null & birthday != "" & password != null){
-			UserService.addAdminUser(idNum, password, email, mNum);
-			String adminId= ""/*Get UserID where COLUMN_ID_NUMBER = idNum */;
-			adminService.addLibraryManager(adminId,fName, lName, mi, sQuestion, sAnswer, birthday);
+
+			int adminId= UserService.addLibraryManagerUser(idNum, password, email, mNum);
+			System.out.println("here : " + adminId);
+			adminService.addLibraryManager(Integer.toString(adminId),fName, lName, mi, sQuestion, sAnswer, birthday);
 
 		}
 			
