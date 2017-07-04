@@ -1,5 +1,9 @@
 import java.sql.Date;
 
+/**
+ * @author Thea
+ *
+ */
 public class Admin {
 	public static String TABLE_NAME = "admin";
 	public static String COLUMN_ADMIN_ID="adminID";
@@ -15,7 +19,7 @@ public class Admin {
 	private String firstName;
 	private String lastName;
 	private String middleInitial;
-	private Date birthday;
+	private String birthday;
 	private String secretQuestion;
 	private String secretAnswer;
 	private int adminType;
@@ -43,12 +47,6 @@ public class Admin {
 	public void setMiddleInitial(String middleInitial) {
 		this.middleInitial = middleInitial;
 	}
-	public Date getBirthday() {
-		return birthday;
-	}
-	public void setBirthday(Date birthday) {
-		this.birthday = birthday;
-	}
 	public String getSecretQuestion() {
 		return secretQuestion;
 	}
@@ -66,6 +64,12 @@ public class Admin {
 	}
 	public void setAdminType(int adminType) {
 		this.adminType = adminType;
+	}
+	public String getBirthday() {
+		return birthday;
+	}
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
 	}
 	
 	

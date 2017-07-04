@@ -1,6 +1,15 @@
 import java.sql.Date;
 
 public class User {
+	public static String TABLE_NAME = "user";
+	
+	public static String COLUMN_USER_ID = "userID";
+	public static String COLUMN_ID_NUMBER = "idNumber";
+	public static String COLUMN_PASSWORD = "password";
+	public static String COLUMN_USER_TYPE = "userType";
+	public static String COLUMN_EMAIL = "emailAddress";
+	public static String COLUMN_PHONE_NUMBER = "phoneNumber";
+	
 	private int userID;
 	private int idNumber;
 	private String password;

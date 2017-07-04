@@ -182,31 +182,58 @@
                     <h4 class="modal-title" id="exampleModalLabel">Add Library Manager</h4>
                 </div>
                 <div class="modal-body" style="margin: 0;">
-                    <form>
+                	<form action = "Controller" method = "POST">
                     <div class="form-group">
-
-                        <div class="form-group col-xs-6">
-                            <input type="text" placeholder ="First Name" class="form-control" id="recipient-name">
+                    	<input type="hidden" name="process" value = "addManager"/>
+                    	
+                    	<div class="form-group col-xs-12">
+                            <input type="text" placeholder ="ID Number" class="form-control" name="id_num">
                         </div>
 
                         <div class="form-group col-xs-6">
-                            <input type="text" placeholder ="Last Name" class="form-control" id="recipient-name">
+                            <input type="text" placeholder ="First Name" class="form-control" name="first_name">
+                        </div>
+                       
+                        <div class="form-group col-xs-6">
+                            <input type="text" placeholder ="Last Name" class="form-control" name="last_name">
+                        </div>
+                        
+                        <div class="form-group col-xs-2">
+                            <input type="text" placeholder ="M.I." class="form-control" name="m_initial">
                         </div>
                         
                         <div class="form-group col-xs-12">
-                            <input type="text" placeholder ="Mobile Number" class="form-control" id="recipient-name">
+                            <input type="text" placeholder ="Mobile Number" class="form-control" name="mobile_number">
                         </div>
 
                         <div class="form-group col-xs-12">
-                        <input type="text" placeholder ="Email Address" class="form-control" id="recipient-name">
+                        	<input type="text" placeholder ="Email Address" class="form-control" name="email_address">
+                        </div>
+                        
+                        <div class="form-group col-xs-12">
+                        	<input type="password" placeholder ="Password" class="form-control" name="password">
+                        </div>
+                        
+                        <div class="form-group col-xs-6">
+                            <input type="text" placeholder ="Secret Question" class="form-control" name="secret_question">
+                        </div>
+                        
+                        <div class="form-group col-xs-6">
+                            <input type="text" placeholder ="Secret Answer" class="form-control" name="secret_answer">
+                        </div>
+                        <div class="form-group col-xs-12">
+                        	<input type="date" id="myDate" name="birthday">
                         </div>
                     </div>
+                    
+                    <div class="modal-footer">
+	                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+	                    <input type="submit" button type="button" id = "submitAddManager" class="btn btn-primary"/>
+                	</div>
+                	
                     </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <button type="button" id = "submitAddManager" class="btn btn-primary">Submit</button>
-                </div>
+                
                 </div>
             </div>
         </div>
@@ -306,6 +333,16 @@
                     $('#addStaffModal').modal('hide');
                     $.snackbar({content: "Successfully Added Staff!"});
                 });   
+                
+                $("#submitAddManager").on("click", function() {
+                	/* var em = "Scared";
+                	$("#hiddeninput").val(em); */
+                	console.log("here at click");
+                	$("#Controller").submit();
+                	
+                });
+                
+                //<form action = "TrialServlet" method = "POST" id = "addManager">
             });
         </script>
     </body>
