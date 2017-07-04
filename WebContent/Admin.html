@@ -1,6 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -39,8 +37,6 @@
         <!-- snackbar -->
         <script src="js/snackbar.min.js"> </script>
 
-		<jsp:include page="/Admin.jsp" />
-		<c:out value="${message}"></c:out>
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container">
@@ -102,11 +98,9 @@
                             <th class="col-md-4">ID Number</th>
                         </tr>
                         <tr>
-                        <c:forEach items="${admin}" var="admin">
-                        	<td id="${admin.id}" value = "${admin.firstName }"> </td>
-							
-								
-						</c:forEach>
+                            <td>active </td>
+                            <td>active </td>
+                            <td>active </td>
                         </tr>
 
                     </table>
@@ -152,7 +146,6 @@
                             <th class="col-md-4">ID Number</th>
                         </tr>
                         <tr>
-                        
                             <td>active </td>
                             <td>active </td>
                             <td>active </td>
