@@ -160,8 +160,10 @@ public class Controller extends HttpServlet {
 						//request.getRequestDispatcher("Admin.jsp").forward(request, response);
 						break;
 					case 1:
+						request.getRequestDispatcher("library-manager.jsp").forward(request, response);
 						break;
 					case 2:
+						request.getRequestDispatcher("library-staff.jsp").forward(request, response);
 						break;
 					case 3:
 						request.getRequestDispatcher("index.jsp").forward(request, response);
@@ -370,11 +372,13 @@ protected void addBooklm(HttpServletRequest request, HttpServletResponse respons
 					response.addCookie(myCookie);
 					
 					System.out.println("Saved cookie 1! " + username);
+					request.getRequestDispatcher("library-manager.jsp").forward(request, response);
 					break;
 				case 2:
 					myCookie = new Cookie("username", username);
 					response.addCookie(myCookie);
 					System.out.println("Saved cookie 2! " + username);
+					request.getRequestDispatcher("library-staff.jsp").forward(request, response);
 					break;
 				case 3:
 					myCookie = new Cookie("username", username);

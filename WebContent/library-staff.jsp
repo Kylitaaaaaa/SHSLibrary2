@@ -83,7 +83,6 @@
           <li class="tab col s3"><a href="#test1">Add Book</a></li>
           <li class="tab col s3"><a class="active" href="#test2">delete book</a></li>
           <li class="tab col s3"><a href="#test3">Edit Book</a></li>
-          <li class="tab col s3"><a href="#test4">Override Room</a></li>
         </ul>
       </div>
       <div id="test1" class="col s12">
@@ -121,19 +120,7 @@
 	        <input type = "submit"  name = "process" class="login loginmodal-submit" ></button>
       	</form>
       </div>
-      <div id="test4" class="col s12">
-      	<form action="override" method="POST">
-      		<input type="text" name="room_logId" placeholder="Room log id">
-      		<input type="text" name="roomId" placeholder="Room id">
-      		<input type="text" name="startTime" placeholder="start time">
-	        <input type="text" name="endTime" placeholder="end time">
-	        <input type="text" name="reservationDate" placeholder="reservation date">
-	        <input type="text" name="dateReserved" placeholder="date reserved">
-	        <input type="text" name="status" placeholder="Status">
-	                    
-	        <input type = "submit"  name = "process" class="login loginmodal-submit" ></button>
-      	</form>
-      </div>
+      
     </div>
     <!-- Page Content goes here -->
   </div>

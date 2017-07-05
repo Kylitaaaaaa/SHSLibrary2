@@ -47,7 +47,7 @@
 			 var review = $("#reviewInput"+mrId).val();
 			 $.ajax({
 		            url:'postAjax',
-		            data:{"parameterToPost":"reviewBook","bookId" : mrId, "bookReview" : review},
+		            data:{"parameterToPost":"reviewBook","bookId" : mrId,"reviewContent" : review, "reviewDate":"2017-07-06"},
 		            type:'post',
 		            success:function(response){
 		            	console.log("success getting response: " + response);
@@ -79,10 +79,6 @@
                     <li class="-item">
                         <a id="nav-announcements" class="text-success -link js-gps-track"
                            ">Meeting Rooms</a>
-                    </li>
-                    <li class="-item">
-                        <a id="nav-services" class="text-success -link js-gps-track"
-                           data-gps-track="top_nav.click({is_current:false, location:1, destination:1})">Books/Magazines</a>
                     </li>
                 </ol>
             </nav>

@@ -35,9 +35,6 @@
                         <li class="-item">
                             <a id="nav-announcements" href="meetingRoomsPage" class="text-success -link js-gps-track">Meeting Rooms</a>
                         </li>
-                        <li class="-item">
-                            <a id="nav-announcements" href="libMagPage" class="text-success -link js-gps-track">lm</a>
-                        </li>
                     </ol>
                 </nav>
 
