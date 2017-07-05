@@ -5,9 +5,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class CustomerService {
-	/*
-	 * 0 - Prof
-	 * 1 - Student
+	/*USER TYPE
+	 * 0 - Admin
+	 * 1 - Manager
+	 * 2 - Staff
+	 * 3 - Prof
+	 * 4 - Student
 	 */
 	public static void addProfessor(String customerId,String firstName, String mi, String lastName, String secretQ, String secretA, String birthday, String a_type){
 		
