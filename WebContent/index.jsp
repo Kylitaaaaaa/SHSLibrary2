@@ -75,46 +75,14 @@
                     </ol>
                 </nav>
                 <div class="-ctas">
-                    <a href="#" class="logo-link text-success"  data-toggle="modal" data-target="#login-modal">Log In</a>
+                    <a href="#" class="logo-link text-success"  data-toggle="modal" data-target="#login-modal">Log out</a>
 
                 </div>
             </div>
         </div>
     </header>
 
-    <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-        <div class="modal-dialog" id = "zindex1050">
-            <div class="loginmodal-container">
-                <p id = "connection-status"></p>
-
-                <div id="openid-buttons">
-                    <div class="major-provider google-login">
-                        <!--<div class="icon-container"><span class="icon" style=""></span></div>-->
-                        <div class="text"><span>Google</span></div>
-                    </div>
-                </div>
-
-                <div class="or-container">
-                    <hr class="or-hr">
-                    <div id="or">or</div>
-                </div>
-                
-                
-                
-                
-                <form id="loginForm" action ="loginUser" method = "GET">
-                    <input type="text" name="user" placeholder="Username">
-                    <input type="password" name="pass" placeholder="Password">
-                    
-                    <input type = "submit"  name = "process" class="login loginmodal-submit" >Login</button>
-                </form>
-
-                <div class="login-help">
-                    <a href="#">Register</a> - <a href="#">Forgot Password</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    
     <div style="padding-bottom: 60px;">
         <!-- padding added to adjust-->
     </div>

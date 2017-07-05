@@ -158,8 +158,10 @@ public class Controller extends HttpServlet {
 		if(username != null & password != null){
 			boolean isValid = false;
 			isValid = UserService.loginUser(username, password);
-			if(isValid)
-				request.getRequestDispatcher("").forward(request, response);
+			if(isValid){
+				request.setAttribute("hasUser", true);
+				request.getRequestDispatcher("index.jsp").forward(request, response);
+			}
 			
 			
 		}			
