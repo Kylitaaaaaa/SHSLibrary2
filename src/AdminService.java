@@ -7,16 +7,7 @@ import java.util.ArrayList;
 
 public class AdminService {
 	
-	/*
-	 * Admin
-	 * 0 - Admin
-	 * 1 - Manager
-	 * 2 - Staff
-	 */
-	
 	public AdminService(){}
-	
-	
 
 	public static void addAdministrator(String adminId,String firstName, String mi, String lastName, String secretQ, String secretA, String birthday){
 		

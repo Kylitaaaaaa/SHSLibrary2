@@ -1,16 +1,5 @@
 
 public class Book {
-	public static String TABLE_NAME = "book";
-	public static String COLUMN_BOOK_ID="bookId";
-	public static String COLUMN_BOOK_TITLE="title";
-	public static String COLUMN_BOOK_TYPE="type";
-	public static String COLUMN_BOOK_AUTHOR="author";
-	public static String COLUMN_BOOK_PUBLISHER="publisher";
-	public static String COLUMN_BOOK_YEAR="year";
-	public static String COLUMN_BOOK_LOCATION="location";
-	public static String COLUMN_BOOK_STATUS="status";
-	
-	
 	private int bookId;
 	private String title;
 	private int type;
