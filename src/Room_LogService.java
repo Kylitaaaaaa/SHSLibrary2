@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class Room_LogService {
+public class Room_LogService { 
 	public static boolean changeReservationDetails (String logId,String roomId, String startTime, String endTime, String reservationDate, String dateReserved, String status) {
 		String sql = "UPDATE " + Room_Log.TABLE_NAME + " SET " + 
 					Room_Log.COLUMN_ROOM_LOG_ROOM_ID + "= ?, " +

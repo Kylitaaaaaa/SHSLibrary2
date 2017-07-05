@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class UserService {
 	public UserService(){}
 	
-	public static Boolean loginUser(String username, String password){
+	public static Boolean loginUser(String username, String password){ 
 		String sql = String.format("Select * from %s where %s = ? and %s = ?", User.TABLE_NAME, User.COLUMN_ID_NUMBER, User.COLUMN_PASSWORD);
 		
 		Connection conn = null;

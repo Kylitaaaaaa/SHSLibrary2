@@ -12,7 +12,7 @@ public class RoomService {
 	 * 
 	 */
 	
-	public static ArrayList<Meeting_Room> getAllMeetings(){
+	public static ArrayList<Meeting_Room> getAllMeetings(){ 
 		ArrayList<Meeting_Room> mList = new ArrayList<Meeting_Room>();
 		String sql = "SELECT * FROM meeting_room";
 		

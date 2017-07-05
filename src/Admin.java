@@ -84,7 +84,7 @@ public class Admin {
 	public int getIdNumber() {
 		return idNumber;
 	}
-	public void setIdNumber(int idNumber) {
+	public void setIdNumber(int idNumber) { 
 		this.idNumber = idNumber; 
 	}
 	public String getPassword() {

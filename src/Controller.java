@@ -161,6 +161,16 @@ public class Controller extends HttpServlet {
 				String meetingId = request.getParameter("meetingId");
 				//reserveRoom with meetingId
 				//check if successfully reserved
+				boolean isReserved = false;
+				isReserved = reserveRoom(request, response);
+				
+				if(isReserved){
+					//do something
+				}
+				else{
+					//do something
+				}
+					
 				String reserved = "true";
 				response.getWriter().write(reserved);
 				break;
@@ -343,7 +353,7 @@ public class Controller extends HttpServlet {
 			System.out.println("Aww");				
 	}
 	
-	protected void reserveRoom(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected boolean reserveRoom(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String roomId =  request.getParameter("roomId");
 		String startTime = request.getParameter("startTime");
 		String endTime = request.getParameter("endTime");
@@ -357,9 +367,12 @@ public class Controller extends HttpServlet {
 			r.setMeetingRoomId(Integer.parseInt(roomId));
 			r.setRoomStatus(Integer.parseInt(status));
 			RoomService.updateRoomStatus(r);
+			
+			return true;
 		}
 		else 
-			System.out.println("Aww");				
+			System.out.println("Aww");		
+		return false;
 	}
 	
 	protected void unlockUserAccount(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
