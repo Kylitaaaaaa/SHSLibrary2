@@ -392,7 +392,97 @@ public class Controller extends HttpServlet {
 		//Edit the Admin.jsp
 		//request.getRequestDispatcher("Admin.jsp").forward(request, response);		
 	}
+	protected void deleteBook(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		Book book = new Book();
+		book.setBookId(Integer.parseInt(request.getParameter("bookId")));
+		if(BookService.deleteBook(book))
+		{
+			System.out.println("BOOK DELETED");
+			//Edit the Admin.jsp
+			//request.getRequestDispatcher("Admin.jsp").forward(request, response);	
+		}
+		else
+		{
+			//Edit the Admin.jsp
+			//request.getRequestDispatcher("Admin.jsp").forward(request, response);	
+		}
+	}
+	protected void editBook(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		Book book = new Book();
+		book.setBookId(Integer.parseInt(request.getParameter("bookId")));
+		book.setAuthor(request.getParameter("author"));
+		book.setPublisher(request.getParameter("publisher"));
+		book.setLocation(request.getParameter("location"));
+		book.setStatus(Integer.parseInt(request.getParameter("status")));
+		book.setTitle(request.getParameter("title"));
+		book.setType(Integer.parseInt(request.getParameter("type")));
+		book.setYear(Integer.parseInt(request.getParameter("year")));
+		if(BookService.editBook(book))
+		{
+			System.out.println("BOOK DELETED");
+			//Edit the Admin.jsp
+			//request.getRequestDispatcher("Admin.jsp").forward(request, response);	
+		}
+		else
+		{
+			//Edit the Admin.jsp
+			//request.getRequestDispatcher("Admin.jsp").forward(request, response);	
+		}
+	}
 	
+
+	protected void changeRoomReservationDetails(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		Room_Log room_Log = new Room_Log();
+		String logId = request.getParameter("room_logId");
+		String roomId = request.getParameter("roomId");
+		String startTime = request.getParameter("startTime");
+		String endTime = request.getParameter("endTime");
+		String reservationDate = request.getParameter("reservationDate");
+		String dateReserved = request.getParameter("dateReserved");
+		String status = request.getParameter("status");
+		if(Room_LogService.changeReservationDetails(logId, roomId, startTime, endTime, reservationDate, dateReserved, status))
+		{
+			System.out.println("BOOK DELETED");
+			//Edit the Admin.jsp
+			//request.getRequestDispatcher("Admin.jsp").forward(request, response);	
+		}
+		else
+		{
+			//Edit the Admin.jsp
+			//request.getRequestDispatcher("Admin.jsp").forward(request, response);	
+		}
+	}
+	
+
+	protected void deleteRoomReservation(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String roomLogId = request.getParameter("roomLogId");
+		Room_Log reservation = new Room_Log();
+		reservation.setRoomLogId(Integer.parseInt(roomLogId));
+		if(Room_LogService.deleteReservation(reservation))
+		{
+			System.out.println("BOOK DELETED");
+			//Edit the Admin.jsp
+			//request.getRequestDispatcher("Admin.jsp").forward(request, response);	
+		}
+		else
+		{
+			//Edit the Admin.jsp
+			//request.getRequestDispatcher("Admin.jsp").forward(request, response);	
+		}
+	}
+	
+	
+	protected void getAllReservations(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		System.out.println("here at getAllAdminManager");
+		ArrayList <Room_Log> room_LogList = Room_LogService.getAllReservations();
+		
+		request.setAttribute("room_LogList", room_LogList);
+		request.getRequestDispatcher("Admin.jsp").forward(request, response);
+	}
 	
 	
 }
