@@ -27,7 +27,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 
 @WebServlet(urlPatterns={"/Controller",
-						"/getAllAdminManager"})
+						"/getAllAdminManager",
+						"/loginUser"})
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public AdminService adminService = new AdminService();
@@ -48,7 +49,7 @@ public class Controller extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		System.out.println("controller get called" + request.getParameter("process"));
+		System.out.println("controller get called " + request.getParameter("process"));
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		process(request, response);
 	}
@@ -78,18 +79,29 @@ public class Controller extends HttpServlet {
 		 * 4 - Student
 		 */
 		
-		String process = ""; 
-		if(request.getParameter("process")!= null)
-			process = request.getParameter("process");
+		String process = "";
+		
+		if(request.getServletPath()!= null)
+			process = request.getServletPath();
+		System.out.println("here");		
+		
 		
 		switch (process) {
 		
 		case "/getAllAdminManager":
 			getAllAdminManager(request, response);
 			break;
+		case "/loginUser":
+			System.out.println("here 2");
+			loginUser(request, response);
+			
+			
+			break;
+			
 			
 		default:
-			getAllAdminManager(request, response);
+			//getAllAdminManager(request, response);
+			System.out.println("here 3");
 			break;
 		}
 		
@@ -130,6 +142,29 @@ public class Controller extends HttpServlet {
 			}
 		}
 		*/
+	}
+	
+	protected void loginUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
+		//change string to int
+		System.out.println("At login");			
+		String username =  request.getParameter("user");
+		String password = request.getParameter("pass");
+		
+		System.out.println("Username : " + username);
+		System.out.println("password : " + password);
+		
+		
+		
+		if(username != null & password != null){
+			boolean isValid = false;
+			isValid = UserService.loginUser(username, password);
+			if(isValid)
+				request.getRequestDispatcher("").forward(request, response);
+			
+			
+		}			
+		else 
+			System.out.println("Aww");				
 	}
 	
 	protected void addAdministrator(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	

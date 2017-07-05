@@ -139,7 +139,7 @@ public class BookService {
 	}	
 	
 	
-	public static boolean updateBookStatus(Book b){
+	public static boolean updateBookStatus(Book b){ 
 		String sql = "UPDATE " + Book_Log.TABLE_NAME + " SET " +
 				Book_Log.COLUMN_BOOK_LOG_STATUS + "= ?, " +
 				 " WHERE " + Book_Log.COLUMN_BOOK_ID + "= ?";

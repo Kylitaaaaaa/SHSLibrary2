@@ -6,6 +6,46 @@ import java.sql.Statement;
 
 public class UserService {
 	public UserService(){}
+	
+	public static Boolean loginUser(String username, String password){
+		String sql = String.format("Select * from %s where %s = ? and %s = ?", User.TABLE_NAME, User.COLUMN_ID_NUMBER, User.COLUMN_PASSWORD);
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		boolean valid = false;
+		
+		try {
+			conn = DBPool.getInstance().getConnection();
+			pstmt=conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			pstmt.setString(1, username);
+			pstmt.setString(2, password);
+			
+			rs = pstmt.executeQuery();
+			
+			valid = rs.next();
+			
+			
+			if(valid){
+				System.out.println("yay");
+				valid = true;
+			}
+			else
+				System.out.println("noo");
+            
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return valid;
+		
+	}
 
 	public static int addCustomerUser(String idNum, String password, String email, String mNumber, String customerType){
 		
