@@ -94,9 +94,11 @@ public class Controller extends HttpServlet {
 		case "/loginUser":
 			System.out.println("here 2");
 			loginUser(request, response);
-			
-			
 			break;
+		case "meetingRoomsPage":
+			gotoMeetingRooms(request, response);
+			break;
+			
 			
 			
 		default:
@@ -142,6 +144,10 @@ public class Controller extends HttpServlet {
 			}
 		}
 		*/
+	}
+	
+	protected void gotoMeetingRooms(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.getRequestDispatcher("meetings.jsp").forward(request, response);
 	}
 	
 	protected void loginUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	

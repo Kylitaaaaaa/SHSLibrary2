@@ -33,7 +33,7 @@
                 <nav class="navigation" role="navigation" aria-label="site navigation">
                     <ol class="-list">
                         <li class="-item">
-                            <a id="nav-announcements" class="text-success -link js-gps-track"
+                            <a id="nav-announcements" href="meetingRoomsPage" class="text-success -link js-gps-track"
                                (click)="selectMeetings()">Meeting Rooms</a>
                         </li>
                         <li class="-item">
