@@ -249,4 +249,14 @@ public class Controller extends HttpServlet {
 		else 
 			System.out.println("Aww");				
 	}
+	
+	protected void unlockUserAccount(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String userID =  request.getParameter("userID");
+		
+		if(userID != null){
+			AdminService.unlockAccount(userID);
+		}
+		else 
+			System.out.println("Aww");				
+	}
 }

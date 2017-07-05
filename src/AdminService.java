@@ -146,5 +146,38 @@ public class AdminService {
 		}
 		return adminList;
 	}
+	
+	public static boolean unlockAccount (String userID) {
+		String sql = "UPDATE " + User.TABLE_NAME + " SET " + 
+					 User.COLUMN_LOCK_STATUS + "= ?, " +
+					 User.COLUMN_LOGIN_ATTEMPTS + "= ?, " +
+					 " WHERE " + User.COLUMN_USER_ID + "= ?";
+					 
+		Connection connection = DBPool.getInstance().getConnection();
+		PreparedStatement pstmt = null;
+		int result = -1;
+		
+		try {
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setString(1, "0");
+			pstmt.setString(2, "0");
+			pstmt.setString(3, userID);
+			
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return result > 0;
+	}
 
+	
 }

@@ -9,6 +9,8 @@ public class User {
 	public static String COLUMN_USER_TYPE = "userType";
 	public static String COLUMN_EMAIL = "emailAddress";
 	public static String COLUMN_PHONE_NUMBER = "phoneNumber";
+	public static String COLUMN_LOCK_STATUS = "lockStatus";
+	public static String COLUMN_LOGIN_ATTEMPTS = "loginAttempts";
 	
 	private int userID;
 	private int idNumber;
@@ -16,6 +18,8 @@ public class User {
 	private int userType;
 	private String emailAddress;
 	private String phoneNumber;
+	private int lockStatus;
+	private int loginAttempts;
 	public int getUserID() {
 		return userID;
 	}
@@ -52,6 +56,20 @@ public class User {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
+	public int getLockStatus() {
+		return lockStatus;
+	}
+	public void setLockStatus(int lockStatus) {
+		this.lockStatus = lockStatus;
+	}
+	public int getLoginAttempts() {
+		return loginAttempts;
+	}
+	public void setLoginAttempts(int loginAttempts) {
+		this.loginAttempts = loginAttempts;
+	}
+	
+	
 	
 	
 	
