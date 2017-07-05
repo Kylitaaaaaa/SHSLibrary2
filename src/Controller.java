@@ -510,8 +510,46 @@ public class Controller extends HttpServlet {
 		ArrayList <Room_Log> room_LogList = Room_LogService.getAllReservations();
 		
 		request.setAttribute("room_LogList", room_LogList);
-		request.getRequestDispatcher("Admin.jsp").forward(request, response);
+		//Edit the Admin.jsp
+		//request.getRequestDispatcher("Admin.jsp").forward(request, response);	
+	}
+	
+
+	protected void addReview(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//change string to int
+		String bookId =  request.getParameter("bookId");
+		String reviewContent = request.getParameter("reviewContent");
+		String userId = request.getParameter("userId");
+		String reviewDate = request.getParameter("reviewDate");
+		
+		if(bookId != null && reviewContent != null && userId != null && reviewDate != null){
+			ReviewService.addReview(bookId, reviewContent, userId, reviewDate);
+		}
+			
+		else 
+			System.out.println("Aww");		
+		
+	}
+	
+
+	
+	protected void getAllReviewsOfABook(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		String bookId =  request.getParameter("bookId");
+		ArrayList <Review> reviewList = ReviewService.getAllReviewsOfABook(Integer.parseInt(bookId));
+		
+		request.setAttribute("reviewList", reviewList);
+		//Edit the Admin.jsp
+		//request.getRequestDispatcher("Admin.jsp").forward(request, response);	
 	}
 	
 	
+	protected void getAllCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		ArrayList <Customer> customerList = CustomerService.getAllCustomer();
+		
+		request.setAttribute("customerLists", customerList);
+		//Edit the Admin.jsp
+		//request.getRequestDispatcher("Admin.jsp").forward(request, response);	
+	}
 }

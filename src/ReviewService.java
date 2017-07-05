@@ -6,10 +6,10 @@ import java.util.ArrayList;
 
 public class ReviewService {
 
-	public static void addReview(String bookId, String reviewContent, String userId){
+	public static void addReview(String bookId, String reviewContent, String userId, String reviewDate){
 		
-		String sql = String.format("INSERT INTO %s (`%s`,`%s`,`%s`) VALUES (?, ?,?)",
-				Review.TABLE_NAME, Review.COLUMN_REVIEW_BOOK_ID,Review.COLUMN_REVIEW_REVIEW_CONTENT, Review.COLUMN_REVIEW_USER_ID );
+		String sql = String.format("INSERT INTO %s (`%s`,`%s`,`%s`,`%s`) VALUES (?, ?,?,?)",
+				Review.TABLE_NAME, Review.COLUMN_REVIEW_BOOK_ID,Review.COLUMN_REVIEW_REVIEW_CONTENT, Review.COLUMN_REVIEW_USER_ID,Review.COLUMN_REVIEW_REVIEW_DATE );
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -20,6 +20,7 @@ public class ReviewService {
 			pstmt.setString(1, bookId);
 			pstmt.setString(2, reviewContent);
 			pstmt.setString(3, userId);
+			pstmt.setString(4, reviewDate);
 			
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
