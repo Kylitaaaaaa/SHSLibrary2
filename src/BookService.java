@@ -208,7 +208,7 @@ public class BookService {
 	}
 	
 	
-	public static ArrayList<Book> getAllBooksWithSerach(String key){
+	public static ArrayList<Book> getAllBooksWithSearch(String key){
 		ArrayList<Book> bookList = new ArrayList<Book>();
 		String sql="SELECT * FROM " + Book.TABLE_NAME + 
 				"where title like '%"+key+"%'"+

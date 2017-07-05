@@ -351,4 +351,14 @@ public class Controller extends HttpServlet {
 		request.getRequestDispatcher("Admin.jsp").forward(request, response);
 	}
 	
+	protected void searchBook(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String keyword = request.getParameter("keyword");
+		ArrayList<Book> bookList = new ArrayList<Book>();
+		bookList=BookService.getAllBooksWithSearch(keyword);
+		request.setAttribute("bookList", bookList);
+		//Edit the Admin.jsp
+		//request.getRequestDispatcher("Admin.jsp").forward(request, response);
+		
+	}
+	
 }
