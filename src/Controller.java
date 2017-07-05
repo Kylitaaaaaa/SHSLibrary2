@@ -82,9 +82,9 @@ public class Controller extends HttpServlet {
 		String process = "";
 		
 		if(request.getServletPath()!= null)
-			process = request.getServletPath();
-		System.out.println("here");		
+			process = request.getServletPath();	
 		
+		System.out.println("going to path: "+process);
 		
 		switch (process) {
 		
@@ -92,7 +92,6 @@ public class Controller extends HttpServlet {
 			getAllAdminManager(request, response);
 			break;
 		case "/loginUser":
-			System.out.println("here 2");
 			loginUser(request, response);
 			break;
 		case "/meetingRoomsPage":
@@ -149,14 +148,15 @@ public class Controller extends HttpServlet {
 	protected void gotoMeetingRooms(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<Meeting_Room> mr = RoomService.getAllMeetings();
 		
+		System.out.println("meeting rooms #"+mr.size());
+		
 		request.setAttribute("meetingRooms", mr);
 		
 		request.getRequestDispatcher("meetings.jsp").forward(request, response);
 	}
 	
 	protected void loginUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
-		//change string to int
-		System.out.println("At login");			
+		//change string to int		
 		String username =  request.getParameter("user");
 		String password = request.getParameter("pass");
 		
@@ -176,7 +176,7 @@ public class Controller extends HttpServlet {
 			
 		}			
 		else 
-			System.out.println("Aww");				
+			System.out.println("Username and password do not match");				
 	}
 	
 	protected void addAdministrator(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	

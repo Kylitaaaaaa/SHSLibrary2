@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="99c73f71-98fc-4e30-8025-7cb31ae9544c" name="Default" comment="" />
+    <list default="true" id="99c73f71-98fc-4e30-8025-7cb31ae9544c" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/classes/.gitignore" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/Admin.class" afterPath="$PROJECT_DIR$/build/classes/Admin.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/AdminService.class" afterPath="$PROJECT_DIR$/build/classes/AdminService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/BookService.class" afterPath="$PROJECT_DIR$/build/classes/BookService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/Controller.class" afterPath="$PROJECT_DIR$/build/classes/Controller.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/Customer.class" afterPath="$PROJECT_DIR$/build/classes/Customer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/Review.class" afterPath="$PROJECT_DIR$/build/classes/Review.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/UserService.class" afterPath="$PROJECT_DIR$/build/classes/UserService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/meetings.jsp" afterPath="$PROJECT_DIR$/WebContent/meetings.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller.java" afterPath="$PROJECT_DIR$/src/Controller.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UserService.java" afterPath="$PROJECT_DIR$/src/UserService.java" />
+    </list>
     <ignored path="$PROJECT_DIR$/build/classes/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,7 +29,7 @@
         <entry file="file://$PROJECT_DIR$/WebContent/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="537">
-              <caret line="119" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
+              <caret line="119" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
               <folding>
                 <element signature="n#style#0;n#p#0;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <marker date="1499266382957" expanded="false" signature="6635:6656" ph="..." />
@@ -31,8 +43,8 @@
       <file leaf-file-name="meetings.jsp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/WebContent/meetings.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="729">
-              <caret line="111" column="30" lean-forward="true" selection-start-line="111" selection-start-column="30" selection-end-line="111" selection-end-column="30" />
+            <state relative-caret-position="204">
+              <caret line="85" column="38" lean-forward="true" selection-start-line="85" selection-start-column="38" selection-end-line="85" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -42,7 +54,7 @@
         <entry file="file://$PROJECT_DIR$/WebContent/css/meetings.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="378">
-              <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+              <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -134,10 +146,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="528" />
-    <option name="y" value="37" />
-    <option name="width" value="1400" />
-    <option name="height" value="990" />
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1938" />
+    <option name="height" value="1048" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -674,15 +686,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1499256738357</updated>
-      <workItem from="1499256755265" duration="3101000" />
+      <workItem from="1499256755265" duration="3334000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3101000" />
+    <option name="totallyTimeSpent" value="3334000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="528" y="37" width="1400" height="990" extended-state="1" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -699,7 +711,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2496382" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1796875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -761,7 +773,7 @@
     <entry file="file://$PROJECT_DIR$/WebContent/css/meetings.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
-          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -777,7 +789,7 @@
     <entry file="file://$PROJECT_DIR$/WebContent/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="537">
-          <caret line="119" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
+          <caret line="119" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
           <folding>
             <element signature="n#style#0;n#p#0;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <marker date="1499266382957" expanded="false" signature="6635:6656" ph="..." />
@@ -789,8 +801,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/meetings.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="729">
-          <caret line="111" column="30" lean-forward="true" selection-start-line="111" selection-start-column="30" selection-end-line="111" selection-end-column="30" />
+        <state relative-caret-position="204">
+          <caret line="85" column="38" lean-forward="true" selection-start-line="85" selection-start-column="38" selection-end-line="85" selection-end-column="38" />
           <folding />
         </state>
       </provider>

@@ -104,13 +104,13 @@
         
         <div class="u-article-container">
         	<c:forEach items="${meetingRooms}" var="mr">
-        		<c:if test="${mr.roomStatus} == 0">
+        		
         			<div class="search-info responsive-image">
                 		<h3><a class="aa" >${mr.roomName}</a></h3>
                 		<button id = "${mr.meetingRoomId }" class="btn-link text-success">Reserve</button>
                 		<hr>
                 	</div>
-        		</c:if>
+        	
         	</c:forEach>
         </div>
     </div>
