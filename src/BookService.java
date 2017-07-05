@@ -247,4 +247,115 @@ public class BookService {
 		return bookList;		
 	}
 
+	
+	public static ArrayList<Book> getAllBooksTitleStartingWithLetter(String key){
+		ArrayList<Book> bookList = new ArrayList<Book>();
+		String sql="SELECT * FROM " + Book.TABLE_NAME + 
+				"where title like '"+key+"%';";		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = DBPool.getInstance().getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				Book a = new Book();
+				a.setBookId(Integer.parseInt(rs.getString(Book.COLUMN_BOOK_ID)));
+				a.setTitle(rs.getString(Book.COLUMN_BOOK_TITLE));
+				a.setType(Integer.parseInt(rs.getString(Book.COLUMN_BOOK_TYPE)));
+				a.setAuthor(rs.getString(Book.COLUMN_BOOK_AUTHOR));
+				a.setPublisher(rs.getString(Book.COLUMN_BOOK_PUBLISHER));
+				a.setYear(Integer.parseInt(rs.getString(Book.COLUMN_BOOK_YEAR)));
+				a.setLocation(rs.getString(Book.COLUMN_BOOK_LOCATION));
+				a.setStatus(Integer.parseInt(rs.getString(Book.COLUMN_BOOK_STATUS)));
+				bookList.add(a);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				rs.close();
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return bookList;		
+	}
+
+	public static ArrayList<Book> getAllBooksAuthorStartingWithLetter(String key){
+		ArrayList<Book> bookList = new ArrayList<Book>();
+		String sql="SELECT * FROM " + Book.TABLE_NAME + 
+				"where author like '"+key+"%';";		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = DBPool.getInstance().getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				Book a = new Book();
+				a.setBookId(Integer.parseInt(rs.getString(Book.COLUMN_BOOK_ID)));
+				a.setTitle(rs.getString(Book.COLUMN_BOOK_TITLE));
+				a.setType(Integer.parseInt(rs.getString(Book.COLUMN_BOOK_TYPE)));
+				a.setAuthor(rs.getString(Book.COLUMN_BOOK_AUTHOR));
+				a.setPublisher(rs.getString(Book.COLUMN_BOOK_PUBLISHER));
+				a.setYear(Integer.parseInt(rs.getString(Book.COLUMN_BOOK_YEAR)));
+				a.setLocation(rs.getString(Book.COLUMN_BOOK_LOCATION));
+				a.setStatus(Integer.parseInt(rs.getString(Book.COLUMN_BOOK_STATUS)));
+				bookList.add(a);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				rs.close();
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return bookList;		
+	}	
+
+	public static ArrayList<Book> getAllBooksPublishertartingWithLetter(String key){
+		ArrayList<Book> bookList = new ArrayList<Book>();
+		String sql="SELECT * FROM " + Book.TABLE_NAME + 
+				"where publisher like '"+key+"%';";		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = DBPool.getInstance().getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				Book a = new Book();
+				a.setBookId(Integer.parseInt(rs.getString(Book.COLUMN_BOOK_ID)));
+				a.setTitle(rs.getString(Book.COLUMN_BOOK_TITLE));
+				a.setType(Integer.parseInt(rs.getString(Book.COLUMN_BOOK_TYPE)));
+				a.setAuthor(rs.getString(Book.COLUMN_BOOK_AUTHOR));
+				a.setPublisher(rs.getString(Book.COLUMN_BOOK_PUBLISHER));
+				a.setYear(Integer.parseInt(rs.getString(Book.COLUMN_BOOK_YEAR)));
+				a.setLocation(rs.getString(Book.COLUMN_BOOK_LOCATION));
+				a.setStatus(Integer.parseInt(rs.getString(Book.COLUMN_BOOK_STATUS)));
+				bookList.add(a);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				rs.close();
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return bookList;		
+	}	
 }
