@@ -4,6 +4,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class BookService {
 	public static void addBook(String title, String type, String author, String publisher, String year, String location, String status){
@@ -358,4 +360,38 @@ public class BookService {
 		}
 		return bookList;		
 	}	
+
+	public static ArrayList<Book> sortBooksByTitle(ArrayList<Book> books){
+		
+		Collections.sort(books,new Comparator<Book>(){
+			@Override
+			public int compare(Book book2, Book book1){
+				return book1.getTitle().compareTo(book2.getTitle());
+			}
+			
+		});
+		return books;
+	}
+	public static ArrayList<Book> sortBooksByAuthor(ArrayList<Book> books){
+		
+		Collections.sort(books,new Comparator<Book>(){
+			@Override
+			public int compare(Book book2, Book book1){
+				return book1.getAuthor().compareTo(book2.getAuthor());
+			}
+			
+		});
+		return books;
+	}
+	public static ArrayList<Book> sortBooksByPublisher(ArrayList<Book> books){
+		
+		Collections.sort(books,new Comparator<Book>(){
+			@Override
+			public int compare(Book book2, Book book1){
+				return book1.getPublisher().compareTo(book2.getPublisher());
+			}
+			
+		});
+		return books;
+	}
 }
