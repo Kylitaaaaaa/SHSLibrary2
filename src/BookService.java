@@ -41,14 +41,14 @@ public class BookService {
 	
 	public static boolean editBook (Book book) {
 		String sql = "UPDATE " + Book.TABLE_NAME + " SET " + 
-					 Book.COLUMN_BOOK_TITLE + "= ?, " +
-					 Book.COLUMN_BOOK_TYPE + "= ?, " +
-					 Book.COLUMN_BOOK_AUTHOR + "= ?, " +
-					 Book.COLUMN_BOOK_PUBLISHER + "= ?, " +
-					 Book.COLUMN_BOOK_YEAR + "= ?, " +
-					 Book.COLUMN_BOOK_LOCATION + "= ?, " +
-					 Book.COLUMN_BOOK_STATUS + "= ?, " +
-					 " WHERE " + Book.COLUMN_BOOK_ID + "= ?";
+					 Book.COLUMN_BOOK_TITLE + " = ?, " +
+					 Book.COLUMN_BOOK_TYPE + " = ?, " +
+					 Book.COLUMN_BOOK_AUTHOR + " = ?, " +
+					 Book.COLUMN_BOOK_PUBLISHER + " = ?, " +
+					 Book.COLUMN_BOOK_YEAR + " = ?, " +
+					 Book.COLUMN_BOOK_LOCATION + " = ?, " +
+					 Book.COLUMN_BOOK_STATUS + " = ? " +
+					 " WHERE " + Book.COLUMN_BOOK_ID + " = ?";
 					 
 		Connection connection = DBPool.getInstance().getConnection();
 		PreparedStatement pstmt = null;
@@ -63,7 +63,7 @@ public class BookService {
 			pstmt.setString(5, Integer.toString(book.getYear()));
 			pstmt.setString(6, book.getLocation());
 			pstmt.setString(7, Integer.toString(book.getStatus()));
-			pstmt.setString(7, Integer.toString(book.getBookId()));
+			pstmt.setString(8, Integer.toString(book.getBookId()));
 			
 			
 			result = pstmt.executeUpdate();

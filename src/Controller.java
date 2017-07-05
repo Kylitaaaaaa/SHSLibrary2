@@ -32,7 +32,12 @@ import javax.servlet.http.HttpServletResponse;
 						"/postAjax",
 						"/getAjax",
 						"/search",
-						"/filterBooks"})
+						"/filterBooks",
+						"/libMagPage",
+						"/addBook",
+						"/deleteBook",
+						"/editBook",
+						"/override"})
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public AdminService adminService = new AdminService();
@@ -113,6 +118,21 @@ public class Controller extends HttpServlet {
 		case "/filterBooks":
 			filterBooks(request, response);
 			break;
+		case "/libMagPage":
+			libMagPage(request,response);
+			break;
+		case "/addBook":
+			addBooklm(request, response);
+			break;
+		case "/deleteBook":
+			deleteBooklm(request, response);
+			break;
+		case "/editBook":
+			editBooklm(request, response);
+			break;
+		case "/override":
+			overridelm(request, response);
+			break;
 			
 		default:
 			//getAllAdminManager(request, response);
@@ -157,6 +177,31 @@ public class Controller extends HttpServlet {
 			}
 		}
 		*/
+	}
+	
+	protected void overridelm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		changeRoomReservationDetails(request, response);
+		request.getRequestDispatcher("library-manager.jsp").forward(request, response);
+	}
+	
+	protected void editBooklm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		editBook(request, response);
+		request.getRequestDispatcher("library-manager.jsp").forward(request, response);
+	}
+	
+	protected void deleteBooklm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		deleteBook(request, response);
+		request.getRequestDispatcher("library-manager.jsp").forward(request, response);
+	}
+	
+protected void addBooklm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		addBook(request, response);
+		request.getRequestDispatcher("library-manager.jsp").forward(request, response);
+	}
+	
+	protected void libMagPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		request.getRequestDispatcher("library-manager.jsp").forward(request, response);
 	}
 	
 	protected void filterBooks(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

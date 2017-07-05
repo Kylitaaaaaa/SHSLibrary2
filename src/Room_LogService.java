@@ -12,7 +12,7 @@ public class Room_LogService {
 					Room_Log.COLUMN_ROOM_LOG_END_TIME + "= ?, " +
 					Room_Log.COLUMN_ROOM_LOG_RESERVATION_DATE + "= ?, " +
 					Room_Log.COLUMN_ROOM_LOG_STATUS + "= ?, " +
-					Room_Log.COLUMN_ROOM_LOG_DATE_RESERVED + "= ?, " +
+					Room_Log.COLUMN_ROOM_LOG_DATE_RESERVED + "= ? " +
 					 " WHERE " + Room_Log.COLUMN_ROOM_LOG_ID + "= ?";
 					 
 		Connection connection = DBPool.getInstance().getConnection();
