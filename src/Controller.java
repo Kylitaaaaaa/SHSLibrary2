@@ -304,13 +304,7 @@ public class Controller extends HttpServlet {
 		for(int i=0; i<adminManList.size(); i++)
 			System.out.println(i + ": " + adminManList.get(i).getFirstName());
 		
-//		ArrayList<String> urls = new ArrayList<String>();
-//		urls.add("heh1");
-//		urls.add("heh2");
-//		urls.add("heh3");
-		
 		request.setAttribute("adminManList", adminManList);
-		//request.setAttribute("urls", urls);
 		request.getRequestDispatcher("Admin.jsp").forward(request, response);
 	}
 	

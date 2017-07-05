@@ -92,16 +92,20 @@
 
                     <table class="table table-hover" >
                         <tr>
-                            <th class="col-md-4"></th>
-                            <th class="col-md-4">Name</th>
-                            <th class="col-md-4">ID Number</th>
+                            <th class="col-md-3">ID Number</th>
+                            <th class="col-md-4">First Name</th>
+                            <th class="col-md-3">Middle Initial</th>
+                            <th class="col-md-3">Last Name</th>
+                            <th class="col-md-3">Birthday</th>
                         </tr>
                         
                         <c:forEach items="${adminManList}" var="o">
                         <tr>
+	                            <td>${o.idNumber} </td>
 	                            <td>${o.firstName} </td>
-	                            <td>help </td>
-	                            <td>hello </td>
+	                            <td>${o.middleInitial} </td>
+	                            <td>${o.lastName} </td>
+	                            <td>${o.birthday} </td>
 	                        </tr>
                         	
                         </c:forEach>

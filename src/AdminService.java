@@ -118,7 +118,13 @@ public class AdminService {
 	public static ArrayList<Admin> getAllUserLibraryManager(){
 		ArrayList<Admin> adminList = new ArrayList<Admin>();
 		
-		String sql="SELECT * FROM " + Admin.TABLE_NAME + ";";
+		//String sql="SELECT * FROM " + Admin.TABLE_NAME + ";";
+//		SELECT * FROM shslibrary.user u,admin a
+//		where u.userID=a.adminId;
+		
+		String sql = "SELECT * FROM User u, Admin a WHERE u.userID = a.adminId";
+		
+		//String sql = "SELECT * FROM " + User.TABLE_NAME + " u, " + Admin.TABLE_NAME + " a WHERE u." + User.COLUMN_ID_NUMBER + " = ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -127,7 +133,36 @@ public class AdminService {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()){
+				
+//				//added
+//				private int idNumber;
+//				private String password;
+//				private int userType;
+//				private String emailAddress;
+//				private String mNumber;
+//				private int lockStatus;
+//				private int loginAttempts;
+//				
+//				//original
+//				private int adminID;
+//				private String firstName;
+//				private String lastName;
+//				private String middleInitial;
+//				private String birthday;
+//				private String secretQuestion;
+//				private String secretAnswer;
+//				private int adminType;
+				
+				
 				Admin a = new Admin();
+				a.setIdNumber(rs.getInt(User.COLUMN_ID_NUMBER));
+				a.setPassword(rs.getString(User.COLUMN_PASSWORD));
+				a.setUserType(rs.getInt(User.COLUMN_USER_TYPE));
+				a.setEmailAddress(rs.getString(User.COLUMN_EMAIL));
+				a.setmNumber(rs.getString(User.COLUMN_PHONE_NUMBER));
+				a.setLockStatus(rs.getInt(User.COLUMN_LOCK_STATUS));
+				a.setLoginAttempts(rs.getInt(User.COLUMN_LOGIN_ATTEMPTS));
+				
 				a.setFirstName(rs.getString(Admin.COLUMN_ADMIN_FIRST_NAME));
 				a.setLastName(rs.getString(Admin.COLUMN_ADMIN_LAST_NAME));
 				a.setMiddleInitial(rs.getString(Admin.COLUMN_ADMIN_MIDDLE_INITIAL));

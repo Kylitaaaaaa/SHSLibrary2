@@ -15,6 +15,16 @@ public class Admin {
 	public static String COLUMN_ADMIN_SECRET_ANSWER="secretAnswer";
 	public static String COLUMN_ADMIN_ADMIN_TYPE="adminType";
 	
+	//added
+	private int idNumber;
+	private String password;
+	private int userType;
+	private String emailAddress;
+	private String mNumber;
+	private int lockStatus;
+	private int loginAttempts;
+	
+	//original
 	private int adminID;
 	private String firstName;
 	private String lastName;
@@ -70,6 +80,48 @@ public class Admin {
 	}
 	public void setBirthday(String birthday) {
 		this.birthday = birthday;
+	}
+	public int getIdNumber() {
+		return idNumber;
+	}
+	public void setIdNumber(int idNumber) {
+		this.idNumber = idNumber;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public int getUserType() {
+		return userType;
+	}
+	public void setUserType(int userType) {
+		this.userType = userType;
+	}
+	public String getEmailAddress() {
+		return emailAddress;
+	}
+	public void setEmailAddress(String emailAddress) {
+		this.emailAddress = emailAddress;
+	}
+	public String getmNumber() {
+		return mNumber;
+	}
+	public void setmNumber(String mNumber) {
+		this.mNumber = mNumber;
+	}
+	public int getLockStatus() {
+		return lockStatus;
+	}
+	public void setLockStatus(int lockStatus) {
+		this.lockStatus = lockStatus;
+	}
+	public int getLoginAttempts() {
+		return loginAttempts;
+	}
+	public void setLoginAttempts(int loginAttempts) {
+		this.loginAttempts = loginAttempts;
 	}
 	
 	
