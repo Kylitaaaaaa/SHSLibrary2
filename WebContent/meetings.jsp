@@ -9,6 +9,31 @@
 
     <link rel="stylesheet" href="css/app_header.css">
     <link rel="stylesheet" href="css/meetings.css">
+    
+    <script type="text/javascript">
+    $(document).ready(function() {
+		 
+		 $(".meeting-link").click(function() {
+			 var mrId = $(this).attr("id");
+			 
+			 $.ajax({
+		            url:'postAjax',
+		            data:{"parameterToPost":"reserveMeeting","meetingId" : mrId},
+		            type:'post',
+		            success:function(response){
+		            	console.log("success getting response: " + response);
+		            	if(response == "true")
+		            		$("."+mrId).text("successfully reserved");
+		            	else
+		            		$("."+mrId).text("reservation failed");
+		            }
+		         });
+		 });
+		 
+    });
+    
+    </script>
+    
 </head>
 <body>
 
@@ -102,12 +127,17 @@
     <div>
         <h5>Available Meetings</h5>
         
+        <form id="viewForm" action="" method = "POST">
+       		<input type = "hidden" name = "selected_idea_to_view" id="meeting-to-reserve"/>
+        </form>
+        
         <div class="u-article-container">
         	<c:forEach items="${meetingRooms}" var="mr">
         		
         			<div class="search-info responsive-image">
                 		<h3><a class="aa" >${mr.roomName}</a></h3>
-                		<button id = "${mr.meetingRoomId }" class="btn-link text-success">Reserve</button>
+                		<button id = "${mr.meetingRoomId }" class="meeting-link btn-link text-success">Reserve</button>
+                		<p class="${mr.meetingRoomId}"></p>
                 		<hr>
                 	</div>
         	

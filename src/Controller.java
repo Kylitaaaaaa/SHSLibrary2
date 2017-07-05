@@ -28,7 +28,9 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(urlPatterns={"/Controller",
 						"/getAllAdminManager",
 						"/loginUser",
-						"/meetingRoomsPage"})
+						"/meetingRoomsPage",
+						"/postAjax",
+						"/getAjax"})
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public AdminService adminService = new AdminService();
@@ -97,6 +99,13 @@ public class Controller extends HttpServlet {
 		case "/meetingRoomsPage":
 			gotoMeetingRooms(request, response);
 			break;
+		case "/postAjax":
+			postAjax(request, response);
+			break;
+		case "/getAjax":
+			getAjax(request, response);
+			break;
+			
 			
 			
 			
@@ -143,6 +152,26 @@ public class Controller extends HttpServlet {
 			}
 		}
 		*/
+	}
+	
+	protected void postAjax(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String parameterToInsert = request.getParameter("parameterToPost");
+		switch(parameterToInsert){
+			case "reserveMeeting":
+				String meetingId = request.getParameter("meetingId");
+				//reserveRoom with meetingId
+				//check if successfully reserved
+				String reserved = "true";
+				response.getWriter().write(reserved);
+				break;
+		}
+	}
+	
+	protected void getAjax(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String parameterToGet = request.getParameter("parameterToGet");
+		
+		switch(parameterToGet){
+		}
 	}
 	
 	protected void gotoMeetingRooms(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
