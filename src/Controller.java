@@ -2,6 +2,7 @@
 
 import java.io.IOException;
 import java.sql.Date;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,7 +26,8 @@ import javax.servlet.http.HttpServletResponse;
  * 4 - Student
  */
 
-@WebServlet("/Controller")
+@WebServlet(urlPatterns={"/Controller",
+						"/getAllAdminManager"})
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public AdminService adminService = new AdminService();
@@ -76,6 +78,22 @@ public class Controller extends HttpServlet {
 		 * 4 - Student
 		 */
 		
+		String process = ""; 
+		if(request.getParameter("process")!= null)
+			process = request.getParameter("process");
+		
+		switch (process) {
+		
+		case "/getAllAdminManager":
+			getAllAdminManager(request, response);
+			break;
+			
+		default:
+			getAllAdminManager(request, response);
+			break;
+		}
+		
+		/*
 		if(a_type != null){
 			switch (a_type) {
 			case "0":
@@ -102,12 +120,8 @@ public class Controller extends HttpServlet {
 			
 			switch (process) {
 			
-			case "addBook":
-				addBook(request, response);
-				break;
-			case "editBook":
-				break;
-			case "deleteBook":
+			case "/getAllAdminManager":
+				getAllAdminManager(request, response);
 				break;
 				
 			default:
@@ -115,6 +129,7 @@ public class Controller extends HttpServlet {
 				break;
 			}
 		}
+		*/
 	}
 	
 	protected void addAdministrator(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
@@ -280,4 +295,23 @@ public class Controller extends HttpServlet {
 		else 
 			System.out.println("Aww");				
 	}
+	
+	protected void getAllAdminManager(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		System.out.println("here at getAllAdminManager");
+		ArrayList <Admin> adminManList = AdminService.getAllUserLibraryManager();
+		
+		for(int i=0; i<adminManList.size(); i++)
+			System.out.println(i + ": " + adminManList.get(i).getFirstName());
+		
+//		ArrayList<String> urls = new ArrayList<String>();
+//		urls.add("heh1");
+//		urls.add("heh2");
+//		urls.add("heh3");
+		
+		request.setAttribute("adminManList", adminManList);
+		//request.setAttribute("urls", urls);
+		request.getRequestDispatcher("Admin.jsp").forward(request, response);
+	}
+	
 }
