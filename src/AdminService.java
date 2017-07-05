@@ -106,7 +106,7 @@ public class AdminService {
 			}
 		}
 	}	
-	public static ArrayList<Admin> getAllAdmin(){
+	public static ArrayList<Admin> getAllUserLibraryManager(){
 		ArrayList<Admin> adminList = new ArrayList<Admin>();
 		String sql="SELECT * FROM " + Admin.TABLE_NAME + ";";
 		Connection conn = null;
@@ -122,7 +122,6 @@ public class AdminService {
 				a.setLastName(rs.getString(Admin.COLUMN_ADMIN_LAST_NAME));
 				a.setMiddleInitial(rs.getString(Admin.COLUMN_ADMIN_MIDDLE_INITIAL));
 				a.setBirthday(rs.getString(Admin.COLUMN_ADMIN_BIRTHDAY));
-				a.setAdminType(Integer.parseInt(rs.getString(Admin.COLUMN_ADMIN_ADMIN_TYPE)));
 				adminList.add(a);
 			}
 		} catch (SQLException e) {

@@ -1,8 +1,6 @@
 
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -179,11 +177,5 @@ public class Controller extends HttpServlet {
 		}			
 		else 
 			System.out.println("Aww");				
-	}	
-	protected void getAdmins(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		//change string to int
-		request.setAttribute("adminList", adminService.getAllAdmin());
-		
 	}	
 }
