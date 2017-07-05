@@ -51,18 +51,7 @@
                     <a class="navbar-brand" href="#">Animo Library</a>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <li id="libManagerTab">
-                            <a href="#">Library Manager</a>
-                        </li>
-
-                        <li id="libStaffTab">
-                            <a href="#">Library Staff</a>
-                        </li>
-                        
-                    </ul>
-                </div>
+                
                 <!-- /.navbar-collapse -->
             </div>
             <!-- /.container -->
@@ -78,18 +67,19 @@
                         <button type='button' id = "addLibMan" class='btn btn-primary'><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Add</button>
                     </div>
                 </div>
-                <h2>Library Manager</h2>
+                <h2>Admin</h2>
 
                 <div class="row withPaddingTop">
                     <ul class="nav nav-tabs">
 
-                        <li role="presentation" id ="libManActiveTab" class="active"><a href="#">Active</a></li>
-                        <li role="presentation" id ="libManPendingTab"><a href="#">Pending</a></li>
+                        <li role="presentation" id ="adminTab" class="active"><a href="#">Administrators</a></li>
+                        <li role="presentation" id ="libManTab"><a href="#">Library Manager</a></li>
+                        <li role="presentation" id ="libStaffTab"><a href="#">Library Staff</a></li>
                     </ul>
                 </div>
                 <!-- /.row -->
 
-                <div  id="libManagerActiveTable" class="withPaddingTop libMan libManActive">
+                <div id="adminTable" class="withPaddingTop libMan libManActive">
 
                     <table class="table table-hover" >
                         <tr>
@@ -98,15 +88,15 @@
                             <th class="col-md-4">ID Number</th>
                         </tr>
                         <tr>
-                            <td>active </td>
-                            <td>active </td>
-                            <td>active </td>
+                            <td>admin </td>
+                            <td>admin </td>
+                            <td>admin </td>
                         </tr>
 
                     </table>
                 </div>
 
-                <div id="libManagerPendingTable" class="withPaddingTop libMan">
+                <div id="libManTable" class="withPaddingTop libMan">
 
                     <table class="table table-hover">
                         <tr>
@@ -115,57 +105,26 @@
                             <th class="col-md-4">ID Number</th>
                         </tr>
                         <tr>
-                            <td>pending </td>
-                            <td>pending </td>
-                            <td>pending </td>
+                            <td>man </td>
+                            <td>man </td>
+                            <td>man </td>
                         </tr>
 
                     </table>
                 </div>
-            </div>
+                
+                <div id="libStaffTable" class="withPaddingTop libMan">
 
-            <div id ="libStaffDiv" class="libStaff">
-                <div class='btn-toolbar pull-right'>
-                    <div class='btn-group'>
-                        <button type='button' id = "addLibStaff"  class='btn btn-primary'><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Add</button>
-                    </div>
-                </div>
-                <h2>Library Staff</h2>
-                <div class="row withPaddingTop">
-                    <ul class="nav nav-tabs">
-                        <li role="presentation" id = "libStaffActive" class="active"><a href="#">Active</a></li>
-                        <li role="presentation" id = "libStaffPend" ><a href="#">Pending</a></li>
-                    </ul>
-                </div>
-
-                <div id="libStaffActiveTable" class="withPaddingTop libStaff">
-                    <table class="table table-hover" >
+                    <table class="table table-hover">
                         <tr>
                             <th class="col-md-4"></th>
                             <th class="col-md-4">Name</th>
                             <th class="col-md-4">ID Number</th>
                         </tr>
                         <tr>
-                            <td>active </td>
-                            <td>active </td>
-                            <td>active </td>
-                        </tr>
-
-                    </table>
-                </div>
-
-                <div id="libStaffPendingTable" class="withPaddingTop libStaff">
-
-                    <table class="table table-hover" >
-                        <tr>
-                            <th class="col-md-4"></th>
-                            <th class="col-md-4">Name</th>
-                            <th class="col-md-4">ID Number</th>
-                        </tr>
-                        <tr>
-                            <td>pending </td>
-                            <td>pending </td>
-                            <td>pending </td>
+                            <td>staff </td>
+                            <td>staff  </td>
+                            <td>staff  </td>
                         </tr>
 
                     </table>
@@ -221,8 +180,12 @@
                         <div class="form-group col-xs-6">
                             <input type="text" placeholder ="Secret Answer" class="form-control" name="secret_answer">
                         </div>
-                        <div class="form-group col-xs-12">
+                        <div class="form-group col-xs-6">
                         	<input type="date" id="myDate" name="birthday">
+                        </div>
+                        
+                        <div class="form-group col-xs-2">
+                            <input type="text" placeholder ="AT" class="form-control" name="a_type">
                         </div>
                     </div>
                     
@@ -246,7 +209,7 @@
                     <h4 class="modal-title" id="exampleModalLabel">Add Library Staff</h4>
                 </div>
                 <div class="modal-body" style="margin: 0;">
-                    <form>
+                    <form action = "Controller" method = "POST">
                     <div class="form-group">
 
                         <div class="form-group col-xs-6">
@@ -265,12 +228,13 @@
                         <input type="text" placeholder ="Email Address" class="form-control" id="recipient-name">
                         </div>
                     </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <input type="submit" button type="button" id = "submitAddStaff" class="btn btn-primary"/>
+                </div>
                     </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <button type="button" id="submitAddStaff" class="btn btn-primary">Submit</button>
-                </div>
+                
                 </div>
             </div>
         </div>

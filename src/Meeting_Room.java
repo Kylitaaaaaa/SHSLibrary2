@@ -1,5 +1,17 @@
 
 public class Meeting_Room {
+	
+	/*
+	 * 0 - Free
+	 * 1 - Not Free
+	 * 
+	 */
+	
+	public static String TABLE_NAME = "meeting_room";
+	public static String COLUMN_ROOM_ID = "meetingRoomId";
+	public static String COLUMN_ROOM_NAME = "roomName";
+	public static String COLUMN_ROOM_STATUS = "roomStatus";
+	
 	private int meetingRoomId;
 	private String roomName;
 	private int roomStatus;
