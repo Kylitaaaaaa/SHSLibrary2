@@ -1,6 +1,8 @@
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class CustomerService {
 	/*
@@ -71,4 +73,45 @@ public class CustomerService {
 			}
 		}
 	}		
+	public static ArrayList<Customer> getAllCustomer(){
+		ArrayList<Customer> customerList = new ArrayList<Customer>();
+		String sql = "SELECT * FROM "+ User.TABLE_NAME+" u, "+Customer.TABLE_NAME+" c WHERE u."+User.COLUMN_USER_ID+" = c."+Customer.COLUMN_CUSTOMER_ID+";";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = DBPool.getInstance().getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()){	
+				
+				Customer a = new Customer();
+				a.setIdNumber(rs.getInt(User.COLUMN_ID_NUMBER));
+				a.setPassword(rs.getString(User.COLUMN_PASSWORD));
+				a.setUserType(rs.getInt(User.COLUMN_USER_TYPE));
+				a.setEmailAddress(rs.getString(User.COLUMN_EMAIL));
+				a.setmNumber(rs.getString(User.COLUMN_PHONE_NUMBER));
+				a.setLockStatus(rs.getInt(User.COLUMN_LOCK_STATUS));
+				a.setLoginAttempts(rs.getInt(User.COLUMN_LOGIN_ATTEMPTS));
+				
+				a.setFirstName(rs.getString(Customer.COLUMN_CUSTOMER_FIRST_NAME));
+				a.setLastName(rs.getString(Customer.COLUMN_CUSTOMER_LAST_NAME));
+				a.setMiddleInitial(rs.getString(Customer.COLUMN_CUSTOMER_MIDDLE_INITIAL));
+				a.setBirthday(rs.getString(Customer.COLUMN_CUSTOMER_BIRTHDAY));
+				customerList.add(a);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				rs.close();
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return customerList;
+	}
 }

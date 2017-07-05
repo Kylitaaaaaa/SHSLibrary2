@@ -11,11 +11,20 @@ public class Customer {
 	public static String COLUMN_CUSTOMER_SECRET_ANSWER="secretAnswer";
 	public static String COLUMN_CUSTOMER_CUSTOMER_TYPE="customerType";
 	
+	//added
+	private int idNumber;
+	private String password;
+	private int userType;
+	private String emailAddress;
+	private String mNumber;
+	private int lockStatus;
+	private int loginAttempts;
+		
 	private int customerID;
 	private String firstName;
 	private String lastName;
 	private String middleInitial;
-	private Date birthday;
+	private String birthday;
 	private String secretQuestion;
 	private String secretAnswer;
 	private int customerType;
@@ -43,10 +52,10 @@ public class Customer {
 	public void setMiddleInitial(String middleInitial) {
 		this.middleInitial = middleInitial;
 	}
-	public Date getBirthday() {
+	public String getBirthday() {
 		return birthday;
 	}
-	public void setBirthday(Date birthday) {
+	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
 	public String getSecretQuestion() {
@@ -66,6 +75,48 @@ public class Customer {
 	}
 	public void setCustomerType(int customerType) {
 		this.customerType = customerType;
+	}
+	public int getIdNumber() {
+		return idNumber;
+	}
+	public void setIdNumber(int idNumber) {
+		this.idNumber = idNumber;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public int getUserType() {
+		return userType;
+	}
+	public void setUserType(int userType) {
+		this.userType = userType;
+	}
+	public String getEmailAddress() {
+		return emailAddress;
+	}
+	public void setEmailAddress(String emailAddress) {
+		this.emailAddress = emailAddress;
+	}
+	public String getmNumber() {
+		return mNumber;
+	}
+	public void setmNumber(String mNumber) {
+		this.mNumber = mNumber;
+	}
+	public int getLockStatus() {
+		return lockStatus;
+	}
+	public void setLockStatus(int lockStatus) {
+		this.lockStatus = lockStatus;
+	}
+	public int getLoginAttempts() {
+		return loginAttempts;
+	}
+	public void setLoginAttempts(int loginAttempts) {
+		this.loginAttempts = loginAttempts;
 	}
 	
 	
