@@ -211,9 +211,9 @@ public class BookService {
 	public static ArrayList<Book> getAllBooksWithSearch(String key){
 		ArrayList<Book> bookList = new ArrayList<Book>();
 		String sql="SELECT * FROM " + Book.TABLE_NAME + 
-				"where title like '%"+key+"%'"+
-				"or author like '%"+key+"%'"+
-				"or publisher like '%"+key+"%';";
+				" where title like '%"+key+"%'"+
+				" or author like '%"+key+"%'"+
+				" or publisher like '%"+key+"%';";
 		
 		
 		Connection conn = null;

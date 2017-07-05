@@ -33,12 +33,7 @@
                 <nav class="navigation" role="navigation" aria-label="site navigation">
                     <ol class="-list">
                         <li class="-item">
-                            <a id="nav-announcements" href="meetingRoomsPage" class="text-success -link js-gps-track"
-                               (click)="selectMeetings()">Meeting Rooms</a>
-                        </li>
-                        <li class="-item">
-                            <a id="nav-services" class="text-success -link js-gps-track"
-                               data-gps-track="top_nav.click({is_current:false, location:1, destination:1})">Books/Magazines</a>
+                            <a id="nav-announcements" href="meetingRoomsPage" class="text-success -link js-gps-track">Meeting Rooms</a>
                         </li>
                     </ol>
                 </nav>
@@ -47,10 +42,10 @@
 
                 </div>
 
-                <form id="search" class="searchbar" autocomplete="off" role="search">
+                <form id="search" class="searchbar" autocomplete="off" role="search" action="search" method="GET">
                     <svg viewBox="0 0 18 18" width="18" height="18" role="icon"><path fill-rule="evenodd" d="M12.864 11.32h-.813l-.288-.277A6.66 6.66 0 0 0 13.38 6.69a6.69 6.69 0 1 0-6.69 6.69 6.66 6.66 0 0 0 4.354-1.617l.278.288v.813L16.467 18 18 16.467l-5.136-5.146zm-6.174 0a4.625 4.625 0 0 1-4.632-4.63A4.625 4.625 0 0 1 6.69 2.058a4.625 4.625 0 0 1 4.63 4.632 4.625 4.625 0 0 1-4.63 4.63z"/></svg>
                     <input id = "searchbar-input" type="text" placeholder="Search..." value="" tabindex="1" autocomplete="on" maxlength="240" class="f-input js-search-field"
-                           [(ngModel)] = "inputText" (keyup.enter)="search()"/>
+                          name="searchInput"/>
                     <button type="submit" class="btn js-search-submit">
                         <svg viewBox="0 0 18 18" width="18" height="18" role="icon"><path fill-rule="evenodd" d="M12.864 11.32h-.813l-.288-.277A6.66 6.66 0 0 0 13.38 6.69a6.69 6.69 0 1 0-6.69 6.69 6.66 6.66 0 0 0 4.354-1.617l.278.288v.813L16.467 18 18 16.467l-5.136-5.146zm-6.174 0a4.625 4.625 0 0 1-4.632-4.63A4.625 4.625 0 0 1 6.69 2.058a4.625 4.625 0 0 1 4.63 4.632 4.625 4.625 0 0 1-4.63 4.63z"/></svg>
                     </button>

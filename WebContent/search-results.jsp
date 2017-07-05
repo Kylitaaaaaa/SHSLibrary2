@@ -14,12 +14,12 @@
     <script>
     $(document).ready(function() {
 		 
-		 $(".meeting-link").click(function() {
+		 $(".book-reserve-link").click(function() {
 			 var mrId = $(this).attr("id");
 			 //$("."+mrId).text("successfully reserved");
 			 $.ajax({
 		            url:'postAjax',
-		            data:{"parameterToPost":"reserveMeeting","meetingId" : mrId},
+		            data:{"parameterToPost":"reserveBook","bookId" : mrId},
 		            type:'post',
 		            success:function(response){
 		            	console.log("success getting response: " + response);
@@ -27,6 +27,22 @@
 		            		$("."+mrId).text("successfully reserved");
 		            	else
 		            		$("."+mrId).text("reservation failed");
+		            }
+		         });
+		 });
+		 $(".book-review-link").click(function() {
+			 var mrId = $(this).attr("name");
+			 var review = $("#reviewInput"+mrId).val();
+			 $.ajax({
+		            url:'postAjax',
+		            data:{"parameterToPost":"reviewBook","bookId" : mrId, "bookReview" : review},
+		            type:'post',
+		            success:function(response){
+		            	console.log("success getting response: " + response);
+		            	if(response == "true")
+		            		$(".review"+mrId).text("successfully reviewed");
+		            	else
+		            		$(".review"+mrId).text("review failed");
 		            }
 		         });
 		 });
@@ -41,7 +57,7 @@
 <header class="so-header js-so-header _fixed" role = "banner">
     <div class="-container">
         <div class="-main">
-            <a [routerLink]="['Home']" class="-logo js-gps-track ">
+            <a class="-logo js-gps-track ">
                 <div class="custom-logo" style="font-size: 16px;">SHS</div>
                 <div class="custom-logo">Library</div>
             </a>
@@ -50,7 +66,7 @@
                 <ol class="-list">
                     <li class="-item">
                         <a id="nav-announcements" class="text-success -link js-gps-track"
-                           (click)="selectMeetings()">Meeting Rooms</a>
+                           ">Meeting Rooms</a>
                     </li>
                     <li class="-item">
                         <a id="nav-services" class="text-success -link js-gps-track"
@@ -86,66 +102,49 @@
     </div>
 </header>
 
-<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog" id = "zindex1050">
-        <div class="loginmodal-container">
-            <p id = "connection-status"></p>
 
-            <div id="openid-buttons">
-                <div class="major-provider google-login">
-                    <!--<div class="icon-container"><span class="icon" style=""></span></div>-->
-                    <div class="text"><span>Google</span></div>
-                </div>
-            </div>
-
-            <div class="or-container">
-                <hr class="or-hr">
-                <div id="or">or</div>
-            </div>
-
-
-
-
-            <form id="loginForm" action ="loginUser" method = "GET">
-                <input type="text" name="user" placeholder="Username">
-                <input type="password" name="pass" placeholder="Password">
-
-                <input type = "submit"  name = "process" class="login loginmodal-submit" >Login</button>
-            </form>
-
-            <div class="login-help">
-                <a href="#">Register</a> - <a href="#">Forgot Password</a>
-            </div>
-        </div>
-    </div>
-</div>
 <div style="padding-bottom: 60px;">
     <!-- padding added to adjust-->
 </div>
 
 
 <div class="u-main-container">
-    <div>
-        <h5>Available Meetings</h5>
-        
-        <form id="viewForm" action="" method = "POST">
-       		<input type = "hidden" name = "selected_idea_to_view" id="meeting-to-reserve"/>
-        </form>
-        
+    <div style="width: 80%">
+        <h5>Search Results for "${searchInput }"</h5>
+
         <div class="u-article-container">
-        	<c:forEach items="${meetingRooms}" var="mr">
+            <div class="dropdown">
+                <button class="dropdown-toggle" data-toggle="dropdown">Filter
+                    <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li>Author</li>
+                    <li>Title</li>
+                    <li>Publisher</li>
+                </ul>
+            </div>
+            
+            <c:forEach items="${books}" var="book">
         		
         			<div class="search-info responsive-image">
-                		<h3><a class="aa" >${mr.roomName}</a></h3>
-                		<button id = "${mr.meetingRoomId }" class="meeting-link btn-link text-success">Reserve</button>
-                		<p class="${mr.meetingRoomId}"></p>
-                		<hr>
-                	</div>
+                <h3><a class="aa">${book.title }</a></h3>
+                <span class="span">${book.author }</span>
+                <p class="pp" >${book.year} ${book.publisher}</p>
+                <button id = "${book.bookId }" class="book-reserve-link btn-link text-success">Reserve</button>
+                <p class="${book.bookId }"></p>
+                <input class="book-review-input" type="text" placeholder="write a review" value="" tabindex="1" autocomplete="on" maxlength="240" class="f-input js-search-field"
+                          id="reviewInput${book.bookId}"/>
+                <button name="${book.bookId }" class="book-review-link btn-link text-success">Review</button>
+                <p class="review${book.bookId}"></p>
+                <hr>
+            </div>
         	
         	</c:forEach>
+            
         </div>
     </div>
 </div>
+
+
 
 
 

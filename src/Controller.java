@@ -30,7 +30,8 @@ import javax.servlet.http.HttpServletResponse;
 						"/loginUser",
 						"/meetingRoomsPage",
 						"/postAjax",
-						"/getAjax"})
+						"/getAjax",
+						"/search"})
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public AdminService adminService = new AdminService();
@@ -105,9 +106,9 @@ public class Controller extends HttpServlet {
 		case "/getAjax":
 			getAjax(request, response);
 			break;
-			
-			
-			
+		case "/search":	
+			search(request,response);
+			break;
 			
 		default:
 			//getAllAdminManager(request, response);
@@ -154,6 +155,17 @@ public class Controller extends HttpServlet {
 		*/
 	}
 	
+	protected void search(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String input = request.getParameter("searchInput");
+		
+		ArrayList<Book> books = BookService.getAllBooksWithSearch(input);
+		
+		request.setAttribute("books", books);
+		request.setAttribute("searchInput", input);
+		
+		request.getRequestDispatcher("search-results.jsp").forward(request, response);
+	}
+	
 	protected void postAjax(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String parameterToInsert = request.getParameter("parameterToPost");
 		switch(parameterToInsert){
@@ -173,6 +185,42 @@ public class Controller extends HttpServlet {
 					
 				String reserved = "true";
 				response.getWriter().write(reserved);
+				break;
+			case "reserveBook":
+				String bookId = request.getParameter("bookId");
+				//reserveRoom with meetingId
+				//check if successfully reserved
+				boolean isReserved1 = false;
+				//isReserved1 = reserveBook(request, response);
+				
+				if(isReserved1){
+					//do something
+				}
+				else{
+					//do something
+				}
+					
+				String reserved1 = "true";
+				response.getWriter().write(reserved1);
+				break;
+			case "reviewBook":
+				String bookId1 = request.getParameter("bookId");
+				String review = request.getParameter("bookReview");
+				System.out.println("book review: "+review);
+				//reserveRoom with meetingId
+				//check if successfully reserved
+				boolean isReviewed = false;
+				//isReserved1 = reserveBook(request, response);
+				
+				if(isReviewed){
+					//do something
+				}
+				else{
+					//do something
+				}
+					
+				String reviewed = "true";
+				response.getWriter().write(reviewed);
 				break;
 		}
 	}
