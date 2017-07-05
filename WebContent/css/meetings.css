@@ -1,0 +1,18 @@
+.search-result-item{
+    margin: 0 0 18px;
+}
+
+.aa{
+    font: 700 18px helvetica;
+}
+
+.pp{
+    font: 400 13px/22px helvetica;
+}
+
+.span{
+    margin: 0 10px 2px 0;
+    display: inline-block;
+    font: 400 12px helvetica;
+    color: #999;
+}
