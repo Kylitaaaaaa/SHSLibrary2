@@ -1,0 +1,125 @@
+#app-body {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1090px;
+    margin: 0px auto;
+    padding-top: 30px;
+    flex-direction: column;
+}
+
+#service-container,
+#announcement-container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.service-card {
+    display: inline-block;
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 32%;
+    -ms-flex: 0 0 32%;
+    flex: 0 0 32%;
+    max-width: 32%;
+}
+
+.-card {
+    border: none;
+    background-color: inherit;
+}
+
+.card-header {}
+
+.-card-text {
+    padding-top: 12px;
+}
+
+.-card-title {
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #353535;
+    cursor: pointer;
+    margin-bottom: 0.75rem;
+    white-space: initial;
+}
+
+.fixed-desc {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
+    /* number of lines to show */
+    line-height: 1.5;
+    /* fallback */
+    max-height: 9rem;
+    /* fallback */
+    /*
+     display: inline-block;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    overflow: hidden;
+    max-height: 3.6em;
+    line-height: 1.8em;
+    /*max-height: = line-height: × <number-of-lines> in em.*/
+}
+
+.-card-footer {
+    font-size: 11px;
+}
+
+.service-row {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 30px;
+}
+
+.service-category {
+    padding: 30px 0px;
+}
+
+.service-category-header {
+    padding-bottom: 20px;
+}
+
+.sch-link {
+    text-decoration: none;
+    font-size: 24px;
+    color: #959595;
+}
+
+.service-tag {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    padding: .4em .5em;
+    margin: 2px 2px 2px 0;
+    font-size: 11px;
+    line-height: 1;
+    white-space: nowrap;
+    text-decoration: none;
+    text-align: center;
+    border-width: 1px;
+    border-style: none;
+    border-radius: 0;
+    transition: all .15s ease-in-out;
+}
+
+.service-tag:hover {
+    text-decoration: none;
+    color: #5cb85c;
+    background-color: #acf8ac;
+    border-color: rgba(0, 0, 0, 0);
+}
+
+.service-tag-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.border-separator {
+    border-right: 1px solid rgba(0, 0, 0, .15)!important;
+    height: auto;
+    margin-right: 4px;
+}
