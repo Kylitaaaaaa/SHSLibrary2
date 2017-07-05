@@ -1,16 +1,8 @@
-.libManPending{
+#libManTable{
     display: none;
 }
 
-#libManagerPendingTable{
-    display: none;
-}
-
-#libStaffDiv{
-    display: none;
-}
-
-#libStaffPendingTable{
+#libStaffTable{
     display: none;
 }
 
