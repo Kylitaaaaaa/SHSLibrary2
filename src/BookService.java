@@ -135,11 +135,10 @@ public class BookService {
 	}	
 	
 	
-	public static boolean updateBookStatus(Meeting_Room mr){
-		
-		String sql = "UPDATE " + Meeting_Room.TABLE_NAME + " SET " +
-				Meeting_Room.COLUMN_ROOM_STATUS + "= ?, " +
-				 " WHERE " + Meeting_Room.COLUMN_ROOM_ID + "= ?";
+	public static boolean updateBookStatus(Book b){
+		String sql = "UPDATE " + Book_Log.TABLE_NAME + " SET " +
+				Book_Log.COLUMN_BOOK_LOG_STATUS + "= ?, " +
+				 " WHERE " + Book_Log.COLUMN_BOOK_ID + "= ?";
 				 
 		Connection connection = DBPool.getInstance().getConnection();
 		PreparedStatement pstmt = null;
@@ -147,8 +146,8 @@ public class BookService {
 		
 		try {
 			pstmt = connection.prepareStatement(sql);
-			pstmt.setString(1,Integer.toString(mr.getRoomStatus()));
-			pstmt.setString(2, Integer.toString(mr.getMeetingRoomId()));
+			pstmt.setString(1,Integer.toString(b.getStatus()));
+			pstmt.setString(2, Integer.toString(b.getBookId()));
 			
 			
 			result = pstmt.executeUpdate();

@@ -1,6 +1,8 @@
 
 
 import java.io.IOException;
+import java.sql.Date;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -227,6 +229,25 @@ public class Controller extends HttpServlet {
 		
 		if(title != null & type != null & author != null & publisher != null & year != null & location != null & status != null)
 			BookService.addBook(title, type, author, publisher, year, location, status);
+		else 
+			System.out.println("Aww");				
+	}
+	
+	protected void reserveBook(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String bookId =  request.getParameter("bookId");
+		String borrowId = request.getParameter("borrowId");
+		String reservationDate = request.getParameter("reservationDate");
+		String borrowDate = request.getParameter("borrowDate");
+		String expectedReturnDate = request.getParameter("expectedReturnDate");
+		String status = request.getParameter("status");
+		
+		if(bookId != null & borrowId != null & reservationDate != null & borrowDate != null & expectedReturnDate != null & status != null){
+			BookService.reserveBook(bookId, borrowId, reservationDate, borrowDate, expectedReturnDate, status);
+			Book b = new Book();
+			b.setBookId(Integer.parseInt(bookId));
+			b.setStatus(Integer.parseInt(status));
+			BookService.updateBookStatus(b);
+		}
 		else 
 			System.out.println("Aww");				
 	}
