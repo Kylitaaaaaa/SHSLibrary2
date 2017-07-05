@@ -324,7 +324,7 @@ public class BookService {
 		return bookList;		
 	}	
 
-	public static ArrayList<Book> getAllBooksPublishertartingWithLetter(String key){
+	public static ArrayList<Book> getAllBooksPublisherStartingWithLetter(String key){
 		ArrayList<Book> bookList = new ArrayList<Book>();
 		String sql="SELECT * FROM " + Book.TABLE_NAME + 
 				"where publisher like '"+key+"%';";		

@@ -351,7 +351,7 @@ public class Controller extends HttpServlet {
 		request.getRequestDispatcher("Admin.jsp").forward(request, response);
 	}
 	
-	protected void searchBook(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void searchBooks(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String keyword = request.getParameter("keyword");
 		ArrayList<Book> bookList = new ArrayList<Book>();
 		bookList=BookService.getAllBooksWithSearch(keyword);
@@ -360,5 +360,35 @@ public class Controller extends HttpServlet {
 		//request.getRequestDispatcher("Admin.jsp").forward(request, response);
 		
 	}
+
+	protected void filterBooksbyAuthor(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String startingLetter = request.getParameter("startingLetter");
+		ArrayList<Book> bookList = new ArrayList<Book>();
+		bookList=BookService.getAllBooksAuthorStartingWithLetter(startingLetter);
+		request.setAttribute("bookList", bookList);
+		//Edit the Admin.jsp
+		//request.getRequestDispatcher("Admin.jsp").forward(request, response);		
+	}
+
+	protected void filterBooksbyTitle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String startingLetter = request.getParameter("startingLetter");
+		ArrayList<Book> bookList = new ArrayList<Book>();
+		bookList=BookService.getAllBooksTitleStartingWithLetter(startingLetter);
+		request.setAttribute("bookList", bookList);
+		//Edit the Admin.jsp
+		//request.getRequestDispatcher("Admin.jsp").forward(request, response);		
+	}
+
+
+	protected void filterBooksbyPublisher(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String startingLetter = request.getParameter("startingLetter");
+		ArrayList<Book> bookList = new ArrayList<Book>();
+		bookList=BookService.getAllBooksPublisherStartingWithLetter(startingLetter);
+		request.setAttribute("bookList", bookList);
+		//Edit the Admin.jsp
+		//request.getRequestDispatcher("Admin.jsp").forward(request, response);		
+	}
+	
+	
 	
 }
