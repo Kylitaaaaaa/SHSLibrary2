@@ -161,7 +161,7 @@ public class Controller extends HttpServlet {
 		
 		
 		
-		if(username != null & password != null){
+		if(username != null && password != null){
 			boolean isValid = false;
 			isValid = UserService.loginUser(username, password);
 			if(isValid){
@@ -190,7 +190,7 @@ public class Controller extends HttpServlet {
 		String a_type = request.getParameter("a_type");
 		
 		
-		if(idNum != null & fName != null & lName != null & mi != null & mNum  != null & email != null & sQuestion != null & sAnswer != null & birthday != "" & password != null & a_type != null){
+		if(idNum != null && fName != null && lName != null && mi != null && mNum  != null && email != null && sQuestion != null && sAnswer != null && birthday != "" && password != null && a_type != null){
 			int adminId = UserService.addAdminUser(idNum, password, email, mNum, a_type);
 			adminService.addAdministrator(Integer.toString(adminId),fName, lName, mi, sQuestion, sAnswer, birthday);
 
@@ -214,7 +214,7 @@ public class Controller extends HttpServlet {
 		String a_type = request.getParameter("a_type");
 		
 		
-		if(idNum != null & fName != null & lName != null & mi != null & mNum  != null & email != null & sQuestion != null & sAnswer != null & birthday != "" & password != null & a_type != null){
+		if(idNum != null && fName != null && lName != null && mi != null && mNum  != null && email != null && sQuestion != null && sAnswer != null && birthday != "" && password != null && a_type != null){
 			int adminId= UserService.addAdminUser(idNum, password, email, mNum, a_type);
 			adminService.addLibraryManager(Integer.toString(adminId),fName, lName, mi, sQuestion, sAnswer, birthday);
 
@@ -238,7 +238,7 @@ public class Controller extends HttpServlet {
 		String password = request.getParameter("password");
 		String a_type = request.getParameter("a_type");
 		
-		if(idNum != null & fName != null & lName != null & mi != null & mNum  != null & email != null & sQuestion != null & sAnswer != null & birthday != "" & password != null & a_type != null){
+		if(idNum != null && fName != null && lName != null && mi != null && mNum  != null && email != null && sQuestion != null && sAnswer != null && birthday != "" && password != null && a_type != null){
 			int adminId= UserService.addAdminUser(idNum, password, email, mNum, a_type);
 			adminService.addLibraryStaff(Integer.toString(adminId),fName, lName, mi, sQuestion, sAnswer, birthday);
 
@@ -264,7 +264,7 @@ public class Controller extends HttpServlet {
 		String a_type = request.getParameter("a_type");
 		
 		
-		if(idNum != null & fName != null & lName != null & mi != null & mNum  != null & email != null & sQuestion != null & sAnswer != null & birthday != "" & password != null){
+		if(idNum != null && fName != null && lName != null && mi != null && mNum  != null && email != null && sQuestion != null && sAnswer != null && birthday != "" && password != null){
 			int customerId= UserService.addCustomerUser(idNum, password, email, mNum, a_type);
 			if(customerId != -1)
 				if(a_type.equals("3"))
@@ -285,7 +285,7 @@ public class Controller extends HttpServlet {
 		String location = request.getParameter("location");
 		String status = request.getParameter("status");
 		
-		if(title != null & type != null & author != null & publisher != null & year != null & location != null & status != null)
+		if(title != null && type != null && author != null && publisher != null && year != null && location != null && status != null)
 			BookService.addBook(title, type, author, publisher, year, location, status);
 		else 
 			System.out.println("Aww");				
@@ -299,7 +299,7 @@ public class Controller extends HttpServlet {
 		String expectedReturnDate = request.getParameter("expectedReturnDate");
 		String status = request.getParameter("status");
 		
-		if(bookId != null & borrowId != null & reservationDate != null & borrowDate != null & expectedReturnDate != null & status != null){
+		if(bookId != null && borrowId != null && reservationDate != null && borrowDate != null && expectedReturnDate != null && status != null){
 			BookService.reserveBook(bookId, borrowId, reservationDate, borrowDate, expectedReturnDate, status);
 			Book b = new Book();
 			b.setBookId(Integer.parseInt(bookId));
@@ -318,7 +318,7 @@ public class Controller extends HttpServlet {
 		String dateReserved = request.getParameter("dateReserved");
 		String status = request.getParameter("status");
 		
-		if(roomId != null & startTime != null & startTime != null & endTime != null & reservationDate != null & dateReserved != null & status != null){
+		if(roomId != null && startTime != null && startTime != null && endTime != null && reservationDate != null && dateReserved != null && status != null){
 			RoomService.reserveRoom(roomId, startTime, endTime, reservationDate, dateReserved, status);
 			Meeting_Room r = new Meeting_Room();
 			r.setMeetingRoomId(Integer.parseInt(roomId));
