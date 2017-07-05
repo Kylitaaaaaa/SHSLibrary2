@@ -14,6 +14,7 @@
     <script src="bootstrap/jquery/jquery.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
     <script src='jquery-1.0.1/jquery.js'></script>
+    <script src='jstorage.js'></script>
 
     <link rel="stylesheet" href="css/app_header.css">
 

@@ -10,7 +10,7 @@ public class DBPool {
 	private static DBPool singleton;
 	private BasicDataSource dataSource;
 	private static String username="root";
-	private static String password="";
+	private static String password="root";
 	private static String url="jdbc:mysql://localhost:3306/shslibrary";
 	
 	private DBPool(){

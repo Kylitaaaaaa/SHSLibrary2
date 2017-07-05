@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -115,8 +116,44 @@ public class Controller extends HttpServlet {
 			break;
 			
 		default:
-			//getAllAdminManager(request, response);
-			System.out.println("here 3");
+			//check cookies
+			Cookie[] cookies = request.getCookies();
+			String username = null;
+			if (cookies != null) {
+				for (int i = 0; i < cookies.length; i++) {
+					if (cookies[i].getName().equals("username")) {
+						username = cookies[i].getValue();
+						break;
+					}
+				}
+			}
+			
+			if(username ==null)
+				request.getRequestDispatcher("login.jsp").forward(request, response);
+			else{
+				int user_type = UserService.getUserType(username);
+				switch(user_type){
+					case 0:
+						System.out.println("here at admin login");
+						
+						getAllAdminManager(request, response);
+						//request.getRequestDispatcher("Admin.jsp").forward(request, response);
+						break;
+					case 1:
+						break;
+					case 2:
+						break;
+					case 3:
+						request.getRequestDispatcher("index.jsp").forward(request, response);
+						break;
+					case 4:
+						request.getRequestDispatcher("index.jsp").forward(request, response);
+						break;
+					default:
+						request.getRequestDispatcher("login.jsp").forward(request, response);
+						break;
+				}
+			}
 			break;
 		}
 		
@@ -263,6 +300,7 @@ public class Controller extends HttpServlet {
 	}
 	
 	protected void loginUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
+		System.out.println("here at login");
 		//change string to int		
 		String username =  request.getParameter("user");
 		String password = request.getParameter("pass");
@@ -270,14 +308,46 @@ public class Controller extends HttpServlet {
 		System.out.println("Username : " + username);
 		System.out.println("password : " + password);
 		
-		
-		
 		if(username != null && password != null){
-			boolean isValid = false;
-			isValid = UserService.loginUser(username, password);
-			if(isValid){
-				request.setAttribute("hasUser", true);
-				request.getRequestDispatcher("index.jsp").forward(request, response);
+			int user_type = -1;
+			user_type = UserService.loginUser(username, password);
+			Cookie myCookie = null;
+			switch(user_type){
+				case 0:
+					myCookie = new Cookie("username", username);
+					response.addCookie(myCookie);
+					System.out.println("Saved cookie 0! " + username);
+					getAllAdminManager(request, response);
+					//request.getRequestDispatcher("Admin.jsp").forward(request, response);
+					break;
+				case 1:
+					myCookie = new Cookie("username", username);
+					response.addCookie(myCookie);
+					
+					System.out.println("Saved cookie 1! " + username);
+					break;
+				case 2:
+					myCookie = new Cookie("username", username);
+					response.addCookie(myCookie);
+					System.out.println("Saved cookie 2! " + username);
+					break;
+				case 3:
+					myCookie = new Cookie("username", username);
+					response.addCookie(myCookie);
+					System.out.println("Saved cookie 3! " + username);
+					
+					request.getRequestDispatcher("index.jsp").forward(request, response);
+					break;
+				case 4:
+					myCookie = new Cookie("username", username);
+					response.addCookie(myCookie);
+					System.out.println("Saved cookie 4! " + username);
+					
+					request.getRequestDispatcher("index.jsp").forward(request, response);
+					break;
+				default:
+					request.getRequestDispatcher("login.jsp").forward(request, response);
+					break;
 			}
 			
 			

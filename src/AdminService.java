@@ -7,11 +7,12 @@ import java.util.ArrayList;
 
 public class AdminService {
 	
-	/*
-	 * Admin
+	/*USER TYPE
 	 * 0 - Admin
 	 * 1 - Manager
 	 * 2 - Staff
+	 * 3 - Prof
+	 * 4 - Student
 	 */
 	
 	public AdminService(){}

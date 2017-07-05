@@ -5,57 +5,39 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+/*USER TYPE
+ * 0 - Admin
+ * 1 - Manager
+ * 2 - Staff
+ * 3 - Prof
+ * 4 - Student
+ */
+
 public class UserService {
 	public UserService(){}
 	
-	public static Boolean loginUser(String username, String password){ 
-		String sql = String.format("Select * from %s where %s = ? and %s = ?", User.TABLE_NAME, User.COLUMN_ID_NUMBER, User.COLUMN_PASSWORD);
+	public static int getUserType(String username){
+		String sql = String.format("Select * from %s where %s = ?", User.TABLE_NAME, User.COLUMN_ID_NUMBER);
+		
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		boolean valid = false;
+		int user_type = -1;
 		
 		try {
 			conn = DBPool.getInstance().getConnection();
 			pstmt=conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			pstmt.setString(1, username);
-			pstmt.setString(2, password);
+			
+			System.out.println("sql user: " + username);
 			
 			rs = pstmt.executeQuery();
 			
-			valid = rs.next();
-			
-			if(valid){
-				System.out.println("yay " + rs.getInt(User.COLUMN_USER_TYPE));
-				int temp = rs.getInt(User.COLUMN_USER_TYPE);
-				switch(temp){
-					case 0:
-						//for admin
-						Admin a = getAdmin(Integer.toString(rs.getInt(User.COLUMN_USER_ID)));
-						if(a!=null){
-							int adminType =a.getAdminType();
-							
-							if(adminType ==0){
-								
-							}
-							else if(adminType ==1){
-								
-							}
-							else if(adminType ==2){
-								
-							}
-							
-						}
-						break;
-					case 1:
-						//check customer
-						break;
-				}
-				valid = true;
-			}
+			if(rs.next())
+				user_type = rs.getInt(User.COLUMN_USER_TYPE);
 			else
-				System.out.println("noo");
+				System.out.println("fail");
             
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -67,9 +49,155 @@ public class UserService {
 				e.printStackTrace();
 			}
 		}
-		return valid;
+		return user_type;
 		
 	}
+	
+	public static int loginUser(String username, String password){ 
+		String sql = String.format("Select * from %s where %s = ? and %s = ?", User.TABLE_NAME, User.COLUMN_ID_NUMBER, User.COLUMN_PASSWORD);
+		
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int user_type = -1;
+		
+		try {
+			conn = DBPool.getInstance().getConnection();
+			pstmt=conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			pstmt.setString(1, username);
+			pstmt.setString(2, password);
+			
+			System.out.println("sql user: " + username);
+			System.out.println("sql password: " + password);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				user_type = rs.getInt(User.COLUMN_USER_TYPE);
+				
+			}
+			else{
+				updateLoginAttemptsLockout(username);
+				System.out.println("fail");
+			}
+            
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return user_type;
+		
+	}
+	
+	public static void updateLoginAttemptsLockout(String username){ 
+		String sql = String.format("Select %s from %s where %s = ?", User.COLUMN_LOGIN_ATTEMPTS, User.TABLE_NAME, User.COLUMN_ID_NUMBER);
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int login_attempts = -1;
+		
+		try {
+			conn = DBPool.getInstance().getConnection();
+			pstmt=conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			pstmt.setString(1, username);
+			
+			System.out.println("sql user: " + username);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				login_attempts = rs.getInt(User.COLUMN_LOGIN_ATTEMPTS);
+			}
+			else
+				System.out.println("fail");
+            
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		if(login_attempts >=0){
+			login_attempts++;
+			
+			if(login_attempts >=3){
+				//lockout
+				
+				sql = "UPDATE " + User.TABLE_NAME + " SET " + 
+						 User.COLUMN_LOGIN_ATTEMPTS + "= ?, " +
+						 User.COLUMN_LOCK_STATUS + "= ? " +
+						 " WHERE " + User.COLUMN_ID_NUMBER + "= ?";
+						 
+				Connection connection = DBPool.getInstance().getConnection();
+				PreparedStatement pstmt2 = null;
+				int result = -1;
+				
+				try {
+					pstmt2 = connection.prepareStatement(sql);
+					pstmt2.setInt(1, login_attempts);
+					pstmt2.setInt(2, 1);
+					pstmt2.setString(3, username);
+					
+					
+					result = pstmt2.executeUpdate();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} finally {
+					try {
+						pstmt2.close();
+						connection.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+				
+			}
+			else{
+				//add login attempt
+				sql = "UPDATE " + User.TABLE_NAME + " SET " + 
+						 User.COLUMN_LOGIN_ATTEMPTS + "= ? " +
+						 " WHERE " + User.COLUMN_ID_NUMBER + "= ?";
+						 
+				Connection connection = DBPool.getInstance().getConnection();
+				PreparedStatement pstmt3 = null;
+				int result = -1;
+				
+				try {
+					System.out.println("login_attempts: " + login_attempts);
+					pstmt3 = connection.prepareStatement(sql);
+					pstmt3.setInt(1, login_attempts);
+					pstmt3.setInt(2, Integer.parseInt(username));
+					
+					result = pstmt3.executeUpdate();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} finally {
+					try {
+						pstmt3.close();
+						connection.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+			
+		}
+		
+	}
+	
 
 	public static int addCustomerUser(String idNum, String password, String email, String mNumber, String customerType){
 		

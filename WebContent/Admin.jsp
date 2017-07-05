@@ -52,7 +52,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Animo Library</a>
+                    <a class="navbar-brand" id ="logout"href="Controller">Logout</a>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 
@@ -76,20 +76,18 @@
                 <div class="row withPaddingTop">
                     <ul class="nav nav-tabs">
 
-                        <li role="presentation" id ="adminTab" class="active"><a href="#">Administrators</a></li>
-                        <li role="presentation" id ="libManTab"><a href="#">Library Manager</a></li>
+                        <li role="presentation" id ="libManTab" class="active"><a href="#">Library Manager</a></li>
                         <li role="presentation" id ="libStaffTab"><a href="#">Library Staff</a></li>
+                        <li role="presentation" id ="profTab"><a href="#">Professors</a></li>
+                        <li role="presentation" id ="studentTab"><a href="#">Student</a></li>
                     </ul>
                 </div>
                 <!-- /.row -->
 
-                <div id="adminTable" class="withPaddingTop libMan libManActive">
-                <form id="getAdminManForm" class="navbar-form navbar-left" action ="getAllAdminManager" method = "GET">
+                <div id="libManTable" class="withPaddingTop libMan">
+                    <form id="getAdminManForm" class="navbar-form navbar-left" action ="getAllAdminManager" method = "GET">
                 	<input type="hidden" name = "process" id = "getAdminManList"/>
                 </form>
-                
-                
-
                     <table class="table table-hover" >
                         <tr>
                             <th class="col-md-3">ID Number</th>
@@ -101,6 +99,7 @@
                         
                         <c:forEach items="${adminManList}" var="o">
                         <tr>
+                        		<td id="${o.idNumber}" > <button type="button" class="btn btn-default">Unlock</button> </td>
 	                            <td>${o.idNumber} </td>
 	                            <td>${o.firstName} </td>
 	                            <td>${o.middleInitial} </td>
@@ -109,45 +108,90 @@
 	                        </tr>
                         	
                         </c:forEach>
-                        
-                        
-
-                    </table>
-                </div>
-
-                <div id="libManTable" class="withPaddingTop libMan">
-
-                    <table class="table table-hover">
-                        <tr>
-                            <th class="col-md-4"></th>
-                            <th class="col-md-4">Name</th>
-                            <th class="col-md-4">ID Number</th>
-                        </tr>
-                        <tr>
-                            <td>man </td>
-                            <td>man </td>
-                            <td>man </td>
-                        </tr>
-
                     </table>
                 </div>
                 
                 <div id="libStaffTable" class="withPaddingTop libMan">
-
-                    <table class="table table-hover">
+                    <form id="getAdminManForm" class="navbar-form navbar-left" action ="getAllAdminManager" method = "GET">
+                		<input type="hidden" name = "process" id = "getAdminManList"/>
+                	</form>
+                    <table class="table table-hover" >
                         <tr>
-                            <th class="col-md-4"></th>
-                            <th class="col-md-4">Name</th>
-                            <th class="col-md-4">ID Number</th>
+                            <th class="col-md-3">ID Number</th>
+                            <th class="col-md-4">First Name</th>
+                            <th class="col-md-3">Middle Initial</th>
+                            <th class="col-md-3">Last Name</th>
+                            <th class="col-md-3">Birthday</th>
                         </tr>
+                        
+                        <c:forEach items="${adminManList}" var="o">
                         <tr>
-                            <td>staff </td>
-                            <td>staff  </td>
-                            <td>staff  </td>
-                        </tr>
-
+                        		<td id="${o.idNumber}" > <button type="button" class="btn btn-default">Unlock</button> </td>
+	                            <td>${o.idNumber} </td>
+	                            <td>${o.firstName} </td>
+	                            <td>${o.middleInitial} </td>
+	                            <td>${o.lastName} </td>
+	                            <td>${o.birthday} </td>
+	                        </tr>
+                        	
+                        </c:forEach>
                     </table>
                 </div>
+                
+                <div id="libProfTable" class="withPaddingTop libMan">
+                    <form id="getAdminManForm" class="navbar-form navbar-left" action ="getAllAdminManager" method = "GET">
+                		<input type="hidden" name = "process" id = "getAdminManList"/>
+                	</form>
+                    <table class="table table-hover" >
+                        <tr>
+                            <th class="col-md-3">ID Number</th>
+                            <th class="col-md-4">First Name</th>
+                            <th class="col-md-3">Middle Initial</th>
+                            <th class="col-md-3">Last Name</th>
+                            <th class="col-md-3">Birthday</th>
+                        </tr>
+                        
+                        <c:forEach items="${adminManList}" var="o">
+                        <tr>
+                        		<td id="${o.idNumber}" > <button type="button" class="btn btn-default">Unlock</button> </td>
+	                            <td>${o.idNumber} </td>
+	                            <td>${o.firstName} </td>
+	                            <td>${o.middleInitial} </td>
+	                            <td>${o.lastName} </td>
+	                            <td>${o.birthday} </td>
+	                        </tr>
+                        	
+                        </c:forEach>
+                    </table>
+                </div>
+                
+                <div id="libStudentTable" class="withPaddingTop libMan">
+                    <form id="getAdminManForm" class="navbar-form navbar-left" action ="getAllAdminManager" method = "GET">
+                		<input type="hidden" name = "process" id = "getAdminManList"/>
+                	</form>
+                    <table class="table table-hover" >
+                        <tr>
+                            <th class="col-md-3">ID Number</th>
+                            <th class="col-md-4">First Name</th>
+                            <th class="col-md-3">Middle Initial</th>
+                            <th class="col-md-3">Last Name</th>
+                            <th class="col-md-3">Birthday</th>
+                        </tr>
+                        
+                        <c:forEach items="${adminManList}" var="o">
+                        <tr>
+                        		<td id="${o.idNumber}" > <button type="button" class="btn btn-default">Unlock</button> </td>
+	                            <td>${o.idNumber} </td>
+	                            <td>${o.firstName} </td>
+	                            <td>${o.middleInitial} </td>
+	                            <td>${o.lastName} </td>
+	                            <td>${o.birthday} </td>
+	                        </tr>
+                        	
+                        </c:forEach>
+                    </table>
+                </div>
+                
             </div>
 
         </div>
@@ -265,38 +309,43 @@
 
         <script>
             $(document).ready(function(){
-                $("#libManagerTab").click(function(){
+            	$("#logout").click(function(){
+            		console.log("here at logout");
+            		document.cookie = 'username=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+            		
+                });
+            	
+            	
+                $("#libManTab").click(function(){
                     $("#libManDiv").show();
-                    $("#libStaffDiv").hide();
+                    $("#libStaffTable").hide();
+                    $("#libProfTable").hide();
+                    $("#libStudentTable").hide();
+                    $('#libManTab').tab('show');
                 });
 
                 $("#libStaffTab").click(function(){
-                    $("#libManDiv").hide();
-                    $("#libStaffDiv").show();
+                	$("#libManDiv").hide();
+                    $("#libStaffTable").show();
+                    $("#libProfTable").hide();
+                    $("#libStudentTable").hide();
+                    $('#libStaffTab').tab('show');
                 });
 
-                $("#libManPendingTab").click(function(){
-                    $("#libManagerActiveTable").hide();
-                    $("#libManagerPendingTable").show();
-                    $('#libManPendingTab').tab('show');
+                $("#profTab").click(function(){
+                	$("#libManDiv").hide();
+                    $("#libStaffTable").hide();
+                    $("#libProfTable").show();
+                    $("#libStudentTable").hide();
+                    $('#profTab').tab('show');
                 });
 
-                $("#libManActiveTab").click(function(){
-                    $("#libManagerActiveTable").show();
-                    $("#libManagerPendingTable").hide();
-                    $('#libManActiveTab').tab('show');
-                });
-
-                $("#libStaffActive").click(function(){
-                    $("#libStaffActiveTable").show();
-                    $("#libStaffPendingTable").hide();
-                    $('#libStaffActive').tab('show');
-                });
-
-                $("#libStaffPend").click(function(){
-                    $("#libStaffActiveTable").hide();
-                    $("#libStaffPendingTable").show();
-                    $('#libStaffPend').tab('show');
+                $("#studentTab").click(function(){
+                	$("#libManDiv").hide();
+                    $("#libStaffTable").hide();
+                    $("#libProfTable").hide();
+                    $("#libStudentTable").show();
+                    $('#studentTab').tab('show');
                 });
 
                 $("#addLibMan").click(function(){

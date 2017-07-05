@@ -1,8 +1,12 @@
-#libManTable{
+#libStaffTable{
     display: none;
 }
 
-#libStaffTable{
+#libProfTable{
+    display: none;
+}
+
+#libStudentTable{
     display: none;
 }
 
