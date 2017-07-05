@@ -7,7 +7,19 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Insert title here</title>
 
+    <!-- include the stylesheets -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+    <!-- include the javascript -->
+    <script src="bootstrap/jquery/jquery.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
+    <script src='jquery-1.0.1/jquery.js'></script>
+
     <link rel="stylesheet" href="css/app_header.css">
+    <link rel="stylesheet" href="css/app_body.css">
+    <link rel="stylesheet" href="css/ui_searchbox.css">
     <link rel="stylesheet" href="css/meetings.css">
     
     <script src='js/jquery.js'></script>

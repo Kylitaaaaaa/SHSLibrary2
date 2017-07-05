@@ -6,8 +6,20 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Insert title here</title>
+    
+    <!-- include the stylesheets -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+    <!-- include the javascript -->
+    <script src="bootstrap/jquery/jquery.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
+    <script src='jquery-1.0.1/jquery.js'></script>
 
     <link rel="stylesheet" href="css/app_header.css">
+    <link rel="stylesheet" href="css/app_body.css">
+    <link rel="stylesheet" href="css/ui_searchbox.css">
     <link rel="stylesheet" href="css/meetings.css">
     
     <script src='js/jquery.js'></script>
@@ -113,15 +125,12 @@
         <h5>Search Results for "${searchInput }"</h5>
 
         <div class="u-article-container">
-            <div class="dropdown">
-                <button class="dropdown-toggle" data-toggle="dropdown">Filter
-                    <span class="caret"></span></button>
-                <ul class="dropdown-menu">
-                    <li>Author</li>
-                    <li>Title</li>
-                    <li>Publisher</li>
-                </ul>
-            </div>
+        <form >
+            <select name="filter">
+  <option value="Author">Author</option>
+  <option value="Title">Title</option>
+  <option value="Publisher">Publisher</option>
+</select></form>
             
             <c:forEach items="${books}" var="book">
         		

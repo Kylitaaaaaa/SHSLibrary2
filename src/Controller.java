@@ -31,7 +31,8 @@ import javax.servlet.http.HttpServletResponse;
 						"/meetingRoomsPage",
 						"/postAjax",
 						"/getAjax",
-						"/search"})
+						"/search",
+						"/filterBooks"})
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public AdminService adminService = new AdminService();
@@ -109,6 +110,9 @@ public class Controller extends HttpServlet {
 		case "/search":	
 			search(request,response);
 			break;
+		case "/filterBooks":
+			filterBooks(request, response);
+			break;
 			
 		default:
 			//getAllAdminManager(request, response);
@@ -155,6 +159,22 @@ public class Controller extends HttpServlet {
 		*/
 	}
 	
+	protected void filterBooks(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String filter = request.getParameter("filter");
+		
+		ArrayList<Book> books;
+		
+		/*switch(filter){
+			case "Author":
+				books = BookService.sort
+				break;
+			case "Title":
+				break;
+			case "Publisher":
+				break;
+		}*/
+	}
+	
 	protected void search(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String input = request.getParameter("searchInput");
 		
@@ -191,7 +211,7 @@ public class Controller extends HttpServlet {
 				//reserveRoom with meetingId
 				//check if successfully reserved
 				boolean isReserved1 = false;
-				//isReserved1 = reserveBook(request, response);
+				reserveBook(request, response);
 				
 				if(isReserved1){
 					//do something
@@ -210,7 +230,7 @@ public class Controller extends HttpServlet {
 				//reserveRoom with meetingId
 				//check if successfully reserved
 				boolean isReviewed = false;
-				//isReserved1 = reserveBook(request, response);
+				addReview(request, response);
 				
 				if(isReviewed){
 					//do something
