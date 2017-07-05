@@ -5,11 +5,13 @@ public class Review {
 	public static String COLUMN_REVIEW_BOOK_ID="bookId";
 	public static String COLUMN_REVIEW_REVIEW_CONTENT="reviewContent";
 	public static String COLUMN_REVIEW_USER_ID="userId";
+	public static String COLUMN_REVIEW_REVIEW_DATE="reviewDate";
 	
 	private int reviewId;
 	private int bookId;
 	private String reviewContent;
 	private int userId;
+	private String reviewDate;
 	public int getReviewId() {
 		return reviewId;
 	}
@@ -34,7 +36,13 @@ public class Review {
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-	
+
+	public String getReviewDate() {
+		return reviewDate;
+	}
+	public void setReviewDate(String reviewDate) {
+		this.reviewDate = reviewDate;
+	}
 	
 
 }
