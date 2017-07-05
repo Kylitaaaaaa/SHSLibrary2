@@ -38,7 +38,8 @@ import javax.servlet.http.HttpServletResponse;
 						"/addBook",
 						"/deleteBook",
 						"/editBook",
-						"/override"})
+						"/override",
+						"/addUser"})
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public AdminService adminService = new AdminService();
@@ -134,6 +135,9 @@ public class Controller extends HttpServlet {
 		case "/override":
 			overridelm(request, response);
 			break;
+		case "/addUser":
+			addUser(request, response);
+			break;
 			
 		default:
 			//check cookies
@@ -157,7 +161,6 @@ public class Controller extends HttpServlet {
 						System.out.println("here at admin login");
 						
 						getAllAdminManager(request, response);
-						//request.getRequestDispatcher("Admin.jsp").forward(request, response);
 						break;
 					case 1:
 						request.getRequestDispatcher("library-manager.jsp").forward(request, response);
@@ -405,6 +408,49 @@ protected void addBooklm(HttpServletRequest request, HttpServletResponse respons
 			System.out.println("Username and password do not match");				
 	}
 	
+	
+	
+	protected void addUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
+		//change string to int
+		String idNum =  request.getParameter("id_num");
+		String fName = request.getParameter("first_name");
+		String lName = request.getParameter("m_initial");
+		String mi = request.getParameter("last_name");
+		String mNum = request.getParameter("mobile_number");
+		String email = request.getParameter("email_address");
+		String sQuestion = request.getParameter("secret_question");
+		String sAnswer = request.getParameter("secret_answer");
+		String birthday = request.getParameter("birthday");
+		String password = request.getParameter("password");
+		String a_type = request.getParameter("a_type");
+		
+		
+		if(idNum != null && fName != null && lName != null && mi != null && mNum  != null && email != null && sQuestion != null && sAnswer != null && birthday != "" && password != null && a_type != null && a_type != ""){
+			
+			int temp = Integer.parseInt(a_type);
+			
+			switch(temp){
+				case 1:
+				case 2:
+					int adminId = UserService.addAdminUser(idNum, password, email, mNum, a_type);
+					adminService.addAdministrator(Integer.toString(adminId),fName, lName, mi, sQuestion, sAnswer, birthday);
+					break;
+				case 3:
+				case 4:
+					addStudentProfessor(request, response);
+					break;
+				default:
+					break;
+					
+			}
+			
+
+		}			
+		else 
+			System.out.println("Aww");		
+		getAllAdminManager(request, response);
+	}
+	
 	protected void addAdministrator(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		//change string to int
 		String idNum =  request.getParameter("id_num");
@@ -429,54 +475,7 @@ protected void addBooklm(HttpServletRequest request, HttpServletResponse respons
 			System.out.println("Aww");				
 	}
 
-	protected void addManager(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//change string to int
-		String idNum =  request.getParameter("id_num");
-		String fName = request.getParameter("first_name");
-		String lName = request.getParameter("m_initial");
-		String mi = request.getParameter("last_name");
-		String mNum = request.getParameter("mobile_number");
-		String email = request.getParameter("email_address");
-		String sQuestion = request.getParameter("secret_question");
-		String sAnswer = request.getParameter("secret_answer");
-		String birthday = request.getParameter("birthday");
-		String password = request.getParameter("password");
-		String a_type = request.getParameter("a_type");
-		
-		
-		if(idNum != null && fName != null && lName != null && mi != null && mNum  != null && email != null && sQuestion != null && sAnswer != null && birthday != "" && password != null && a_type != null){
-			int adminId= UserService.addAdminUser(idNum, password, email, mNum, a_type);
-			adminService.addLibraryManager(Integer.toString(adminId),fName, lName, mi, sQuestion, sAnswer, birthday);
-
-		}
-			
-		else 
-			System.out.println("Aww");		
-		
-	}
-	protected void addStaff(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {				
-		//change string to int
-		String idNum =  request.getParameter("id_num");
-		String fName = request.getParameter("first_name");
-		String lName = request.getParameter("m_initial");
-		String mi = request.getParameter("last_name");
-		String mNum = request.getParameter("mobile_number");
-		String email = request.getParameter("email_address");
-		String sQuestion = request.getParameter("secret_question");
-		String sAnswer = request.getParameter("secret_answer");
-		String birthday = request.getParameter("birthday");
-		String password = request.getParameter("password");
-		String a_type = request.getParameter("a_type");
-		
-		if(idNum != null && fName != null && lName != null && mi != null && mNum  != null && email != null && sQuestion != null && sAnswer != null && birthday != "" && password != null && a_type != null){
-			int adminId= UserService.addAdminUser(idNum, password, email, mNum, a_type);
-			adminService.addLibraryStaff(Integer.toString(adminId),fName, lName, mi, sQuestion, sAnswer, birthday);
-
-		}
-			
-		else 
-			System.out.println("Aww");				
-	}
+	
 	
 
 	protected void addStudentProfessor(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	

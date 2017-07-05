@@ -16,11 +16,11 @@ import java.util.ArrayList;
 public class UserService {
 	public UserService(){}
 	
-	public static int getUserType(String username){
+	public static int getUserType(String username){ 
 		String sql = String.format("Select * from %s where %s = ?", User.TABLE_NAME, User.COLUMN_ID_NUMBER);
 		
 		
-		Connection conn = null;
+		Connection conn = null; 
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		int user_type = -1;
