@@ -3,6 +3,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class UserService {
 	public UserService(){}
@@ -25,9 +26,32 @@ public class UserService {
 			
 			valid = rs.next();
 			
-			
 			if(valid){
-				System.out.println("yay");
+				System.out.println("yay " + rs.getInt(User.COLUMN_USER_TYPE));
+				int temp = rs.getInt(User.COLUMN_USER_TYPE);
+				switch(temp){
+					case 0:
+						//for admin
+						Admin a = getAdmin(Integer.toString(rs.getInt(User.COLUMN_USER_ID)));
+						if(a!=null){
+							int adminType =a.getAdminType();
+							
+							if(adminType ==0){
+								
+							}
+							else if(adminType ==1){
+								
+							}
+							else if(adminType ==2){
+								
+							}
+							
+						}
+						break;
+					case 1:
+						//check customer
+						break;
+				}
 				valid = true;
 			}
 			else
@@ -134,5 +158,53 @@ public class UserService {
 		}
 		
 		return auto_id;
+	}
+	
+	public static Admin getAdmin(String id){
+		Admin a = null;
+		
+		String sql = "SELECT * FROM User u, Admin a WHERE u.userID = ? and a.adminId = ?";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = DBPool.getInstance().getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, Integer.parseInt(id));
+			pstmt.setInt(2, Integer.parseInt(id));
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				System.out.println("putangina " + rs.getInt(User.COLUMN_ID_NUMBER));
+				a = new Admin();
+				a.setIdNumber(rs.getInt(User.COLUMN_ID_NUMBER));
+				a.setPassword(rs.getString(User.COLUMN_PASSWORD));
+				a.setUserType(rs.getInt(User.COLUMN_USER_TYPE));
+				a.setEmailAddress(rs.getString(User.COLUMN_EMAIL));
+				a.setmNumber(rs.getString(User.COLUMN_PHONE_NUMBER));
+				a.setLockStatus(rs.getInt(User.COLUMN_LOCK_STATUS));
+				a.setLoginAttempts(rs.getInt(User.COLUMN_LOGIN_ATTEMPTS));
+				
+				a.setFirstName(rs.getString(Admin.COLUMN_ADMIN_FIRST_NAME));
+				a.setLastName(rs.getString(Admin.COLUMN_ADMIN_LAST_NAME));
+				a.setMiddleInitial(rs.getString(Admin.COLUMN_ADMIN_MIDDLE_INITIAL));
+				a.setBirthday(rs.getString(Admin.COLUMN_ADMIN_BIRTHDAY));
+			}
+			else
+				System.out.println("fuck ");
+			System.out.println("fuck " + a.getFirstName());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				rs.close();
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return a;
 	}
 }

@@ -1,6 +1,8 @@
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
+
 
 public class RoomService {
 	/*
@@ -8,6 +10,14 @@ public class RoomService {
 	 * 1 - Not Free
 	 * 
 	 */
+	
+	public static ArrayList<Meeting_Room> getAllMeetings(){
+		
+		//String sql = String.format("SELECT *");
+		
+		return null;
+		
+	}
 	
 	public static void reserveRoom(String roomId, String startTime, String endTime, String reservationDate, String dateReserved, String status){
 		

@@ -1,7 +1,6 @@
 
 
 import java.io.IOException;
-import java.sql.Date;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -28,7 +27,8 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(urlPatterns={"/Controller",
 						"/getAllAdminManager",
-						"/loginUser"})
+						"/loginUser",
+						"/meetingRoomsPage"})
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public AdminService adminService = new AdminService();
@@ -95,7 +95,7 @@ public class Controller extends HttpServlet {
 			System.out.println("here 2");
 			loginUser(request, response);
 			break;
-		case "meetingRoomsPage":
+		case "/meetingRoomsPage":
 			gotoMeetingRooms(request, response);
 			break;
 			
@@ -147,6 +147,10 @@ public class Controller extends HttpServlet {
 	}
 	
 	protected void gotoMeetingRooms(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ArrayList<Meeting_Room> mr = RoomService.getAllMeetings();
+		
+		request.setAttribute("meetingRooms", mr);
+		
 		request.getRequestDispatcher("meetings.jsp").forward(request, response);
 	}
 	
