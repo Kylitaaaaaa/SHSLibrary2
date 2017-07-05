@@ -10,12 +10,13 @@
     <link rel="stylesheet" href="css/app_header.css">
     <link rel="stylesheet" href="css/meetings.css">
     
-    <script type="text/javascript">
+    <script src='js/jquery.js'></script>
+    <script>
     $(document).ready(function() {
 		 
 		 $(".meeting-link").click(function() {
 			 var mrId = $(this).attr("id");
-			 
+			 //$("."+mrId).text("successfully reserved");
 			 $.ajax({
 		            url:'postAjax',
 		            data:{"parameterToPost":"reserveMeeting","meetingId" : mrId},
