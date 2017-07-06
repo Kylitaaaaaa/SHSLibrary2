@@ -4,7 +4,6 @@ import java.sql.SQLException;
 import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 import com.mysql.jdbc.Driver;
 
-
 public class DBPool {
 	
 	private static DBPool singleton;
