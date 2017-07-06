@@ -62,7 +62,7 @@
                 </ol>
             </nav>
             <div class="-ctas">
-                <a href="#" class="logo-link text-success"  data-toggle="modal" data-target="#login-modal">Log In</a>
+                <a href="Controller" id ="logout"class="logo-link text-success" >Log out</a>
 
             </div>
         </div>
@@ -139,6 +139,16 @@
   </div>
 
 
+<script>
+    $(document).ready(function(){
+    	$("#logout").click(function(){
+    		console.log("here at logout");
+    		document.cookie = 'username=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    		
+        });
+    });
+    	
+    </script>
 
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js"></script>

@@ -70,7 +70,7 @@
                     </ol>
                 </nav>
                 <div class="-ctas">
-                    <a href="#" class="logo-link text-success"  data-toggle="modal" data-target="#login-modal">Log out</a>
+                    <a href="Controller" id ="logout"class="logo-link text-success" >Log out</a>
 
                 </div>
             </div>
@@ -102,5 +102,16 @@
         font: 400 15px helvetica;
         color: #999;">none reserved yet</p>
     </section>
+    
+    <script>
+    $(document).ready(function(){
+    	$("#logout").click(function(){
+    		console.log("here at logout");
+    		document.cookie = 'username=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    		
+        });
+    });
+    	
+    </script>
 </body>
 </html>
